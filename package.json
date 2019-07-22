@@ -12,7 +12,7 @@
     "decorators",
     "es7"
   ],
-  "author": "Scotley <scott@inspireweb.co.nz>",
+  "author": "Scott Llewelyn <scott@inspireweb.co.nz>",
   "license": "MIT",
   "devDependencies": {
     "@vuex-orm/core": "^0.32.0",
