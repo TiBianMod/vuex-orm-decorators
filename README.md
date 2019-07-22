@@ -13,13 +13,7 @@ This documentation isn't supposed to be a replacement for the vuex-orm documenta
 
 If you have improvements or contributions to make, I will happily check and merge in pull requests.
 
-
-### Typescript
-
-1. Set ```ExperimentalDecorators``` to true.
-2. Set ```importHelpers: true```in ```tsconfig.json```.
-3. Set ```emitHelpers: true``` in ```tsconfig.json``` (only required in typescript 2)
-
+&nbsp;
 ### Installation
 
 ```
@@ -28,10 +22,19 @@ npm install -D vuex-orm-decorators
 
 This package targets es2015, if you need to target es5 then you will need to get VUE-CLI to transpile this package.
 
+&nbsp;
+### Typescript
+
+1. Set ```ExperimentalDecorators``` to true.
+2. Set ```importHelpers: true```in ```tsconfig.json```.
+3. Set ```emitHelpers: true``` in ```tsconfig.json``` (only required in typescript 2)
+
+&nbsp;
+
 ### Basic Usage
 
 Out of the box a vuex-orm model is defined as:
-```
+```typescript
 import { Model } from '@vuex-orm/core'
 
 class User extends Model {
@@ -45,9 +48,9 @@ class User extends Model {
   }
 }
 ```
-The defined fields don't gain type checking by Typescript in this way because they are never defined as properties of the model class.  With this decorator library it allows you to write the same in the following way:
+The defined fields don't gain type checking by Typescript in this way because they are never defined as properties of the model class.  With this decorator library though it allows you to write the same in the following way to achieve type checking on your queried models:
 
-```
+```typescript
 import { Model } from '@vuex-orm/core'
 import { AttrField, StringField } from 'vuex-orm-decorators'
 
@@ -63,11 +66,37 @@ class User extends Model{
 }
 ```
 
+&nbsp;
+### Getters
+
+To create a fully reactive getter, simply add your getters to the model class:
+
+```typescript
+import { Model } from '@vuex-orm/core'
+import { AttrField, StringField } from 'vuex-orm-decorators'
+
+
+@OrmModel('users')
+class User extends Model{
+
+    @AttrField(undefined)
+    public id!: number;
+
+    @StringField()
+    public name!: string;
+
+    public get lowerName(){
+        return this.name.toLowerCase();
+    }
+}
+```
+
+&nbsp;
 ### Setting a Primary Key
 
-Rather than setting a primary key by setting the static property ```primaryKey``` with the magic string name of the property you want to be the primary key, you can simply annotate the property with the ```@PrimaryKey``` decorator as follows:
+Rather than setting a [primary key](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primary-key) by setting the static property ```primaryKey``` with the magic string name of the property you want to be the primary key, you can simply annotate the property with the ```@PrimaryKey``` decorator as follows:
 
-```
+```typescript
 import { Model } from '@vuex-orm/core'
 import { AttrField, StringField } from 'vuex-orm-decorators'
 
@@ -83,31 +112,40 @@ class User extends Model{
     public name!: string;
 }
 ```
+In this example the property ```uuid``` replaces the default ```id``` property as the primary key.
+
+&nbsp;
 ### Generic Types
 
-You can create the generic ```attr``` field type using the ```@AttrField``` decorator.
+You can create the generic [attr field](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#generic-types) type using the ```@AttrField``` decorator.
 
+&nbsp;
+### Auto Increment
+
+To create auto [increment fields](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#auto-increment-type) which use the ```@Increment``` decorator.
+
+&nbsp;
 ### Primative Types
 
 Like the vuex-orm library, you can create primative fields using the following decorators:
 
-1. ```@StringField```
-2. ```@NumberField```
-3. ```@BooleanField```
+1. ```@StringField``` creates a [string](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
+2. ```@NumberField``` creates a [number](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
+3. ```@BooleanField``` creates a [boolean](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
 
-
+&nbsp;
 ### Creating Relationships
 
-You can create all relationships defined in the vuex-orm library:
+You can create all relationships defined in the vuex-orm library.  All the relationship decorators take the exact same arguments as the vanilla vuex-orm library static functions.
 
-1. ```@HasManyField(related: typeof Model | string, foreignKey: string, localKey?: string)```
-2. ```@HasOneField(related: typeof Model | string, foreignKey: string, localKey?: string)```
-3. ```@BelongsToField(parent: typeof Model | string, foreignKey: string, ownerKey?: string)```
-4. ```@HasManyByField(parent: typeof Model | string, foreignKey: string, ownerKey?: string)```
-5. ```@HasManyThroughField(related: typeof Model | string, through: typeof Model | string, firstKey: string, secondKey: string, localKey?: string, secondLocalKey?: string)```
-6. ```@BelongsToManyField(related: typeof Model | string, pivot: typeof Model | string, foreignPivotKey: string, relatedPivotKey: string, parentKey?: string, relatedKey?: string)```
-7. ```@MorphToField(id: string, type: string)```
-8. ```@MorphOneField(related: typeof Model | string, id: string, type: string, localKey?: string)```
-9. ```@MorphManyField(related: typeof Model | string, id: string, type: string, localKey?: string)```
-10. ```@MorphToManyField(related: typeof Model | string, pivot: typeof Model | string, relatedId: string, id: string, type: string, parentKey?: string, relatedKey?: string)```
-11. ```@MorphedByManyField(related: typeof Model | string, pivot: typeof Model | string, relatedId: string, id: string, type: string, parentKey?: string, relatedKey?: string)```
+1. ```@HasManyField``` creates a [HasMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-many) relationship field
+2. ```@HasOneField``` creates a [HasOne](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one) relationship field
+3. ```@BelongsToField``` creates an inverse [HasOne](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-inverse) relationship field
+4. ```@HasManyByField``` creates a [HasManyBy](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#has-many-by) relationship field
+5. ```@HasManyThroughField``` creates a [HasManyThrough](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#has-many-through) relationship field
+6. ```@BelongsToManyField``` creates a [BelongsToMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#many-to-many) relationship field
+7. ```@MorphToField``` creates a [MorphTo](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-polymorphic) relationship field
+8. ```@MorphOneField``` creates a [MorphOne](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-polymorphic) relationship field
+9. ```@MorphManyField``` creates a [MorphMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-polymorphic) relationship field
+10. ```@MorphToManyField``` creates a [MorphToMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#many-to-many-polymorphic) relationship field
+11. ```@MorphedByManyField``` creates a [MorphedByMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#defining-the-inverse-of-the-relationship-2) relationship field
