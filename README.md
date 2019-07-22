@@ -65,7 +65,7 @@ class User extends Model{
 
 ### Setting a Primary Key
 
-Rather than setting a primary key by setting the static property ```primaryKey``` with the magic string name of the property you want to be the primary key, you can annotate it with a decorator as follows:
+Rather than setting a primary key by setting the static property ```primaryKey``` with the magic string name of the property you want to be the primary key, you can simply annotate the property with the ```@PrimaryKey``` decorator as follows:
 
 ```
 import { Model } from '@vuex-orm/core'
