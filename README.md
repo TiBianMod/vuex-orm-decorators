@@ -1,13 +1,13 @@
 # vuex-orm-decorators
-Decorator Syntax for Vuex ORM for better type safety.
+Decorator Syntax for Vuex ORM for better type safety and a better experience.
 
 ![NPM](https://img.shields.io/npm/l/vuex-orm-decorators.svg) ![npm bundle size](https://img.shields.io/bundlephobia/min/vuex-orm-decorators.svg) ![GitHub issues](https://img.shields.io/github/issues/scotley/vuex-orm-decorators.svg) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/scotley/vuex-orm-decorators.svg) ![](https://img.shields.io/badge/types-Typescript-blue.svg)
 
-Simple Typescript Decorators to simplify vuex-orm integration in typescript projects.
+Typescript Decorators to simplify vuex-orm integration in typescript projects.  If you are using the [vue-module-decorators](https://github.com/championswimmer/vuex-module-decorators) or [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) packages then this will allow you to use the vuex-orm plugin in the same way.
 
-Using the decorators allows better type safety in your projects, by allowing you to create conventional Typescript properties, and anotate them as fields.  Removes the 'magic string' aspect of vuex-orm.
+Using the decorators allows better type safety in your projects by allowing you to create conventional Typescript properties, and anotate them as fields.  Intellisense in Visual Studio Code just works with the annotations, where it doesn't in the vanilla plugin without boilerplate.  Removes the 'magic string' aspect of vuex-orm.
 
-This documentation isn't supposed to be a replacement for the vuex-orm documentation, if you are unfamiliar with the concepts the check out their documentation: https://vuex-orm.github.io/vuex-orm/guide/prologue/what-is-vuex-orm.html
+This documentation isn't supposed to be a replacement for the vuex-orm documentation, if you are unfamiliar with the concepts the check out their documentation: https://vuex-orm.github.io/vuex-orm/guide/prologue/what-is-vuex-orm.html.  I have linked to relevant guide pages in their documation throughout this documentation.
 
 ##### Contribute
 
