@@ -1,23 +1,30 @@
 {
-  "name": "vuex-orm-decorators",
-  "version": "1.0.0",
-  "description": "Simple Typescript decorators to improve the vuex-orm experience in Typescript by introducing typed property access.",
-  "main": "index.ts",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "vuex-orm",
-    "typescript",
-    "decorators",
-    "es7"
-  ],
-  "author": "Scott Llewelyn <scott@inspireweb.co.nz>",
-  "license": "MIT",
-  "devDependencies": {
-    "@vuex-orm/core": "^0.32.0",
-    "typescript": "^3.5.3",
-    "vue": "^2.6.10",
-    "vuex": "^3.1.1"
-  }
+    "name": "vuex-orm-decorators",
+    "version": "1.0.3",
+    "description": "Simple Typescript decorators to improve the vuex-orm experience in Typescript by introducing typed property access.",
+    "main": "dist/index.js",
+    "types": "dist/types/index.d.ts",
+    "typings": "dist/types/index.d.ts",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc"
+    },
+    "keywords": [
+        "vuex-orm",
+        "typescript",
+        "decorators",
+        "es7"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/scotley/vuex-orm-decorators.git"
+    },
+    "author": "Scotley <scott@inspireweb.co.nz>",
+    "license": "MIT",
+    "devDependencies": {
+        "@vuex-orm/core": "^0.32.0",
+        "typescript": "^3.5.3",
+        "vue": "^2.6.10",
+        "vuex": "^3.1.1"
+    }
 }
