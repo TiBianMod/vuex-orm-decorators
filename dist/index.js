@@ -78,7 +78,7 @@ export function HasManyField(related, foreignKey, localKey) {
  * @param foreignKey The foreign key of the related model
  * @param localKey The local key on the parent model
  */
-export function HasOne(related, foreignKey, localKey) {
+export function HasOneField(related, foreignKey, localKey) {
     return Field(Model.hasOne(related, foreignKey, localKey));
 }
 /**

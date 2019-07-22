@@ -51,7 +51,7 @@ export declare function HasManyField(related: typeof Model | string, foreignKey:
  * @param foreignKey The foreign key of the related model
  * @param localKey The local key on the parent model
  */
-export declare function HasOne(related: typeof Model | string, foreignKey: string, localKey?: string): (target: Object, propertyName: string | symbol) => void;
+export declare function HasOneField(related: typeof Model | string, foreignKey: string, localKey?: string): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as a 'Belongs To' relationship field
  * @param parent The class of the parent model
