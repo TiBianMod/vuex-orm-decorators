@@ -85,7 +85,7 @@ class User extends Model{
 ```
 ### Generic Types
 
-You can create the generic ```attr``` filed type using the ```@AttrField``` decorator.
+You can create the generic ```attr``` field type using the ```@AttrField``` decorator.
 
 ### Primative Types
 
@@ -101,7 +101,7 @@ Like the vuex-orm library, you can create primative fields using the following d
 You can create all relationships defined in the vuex-orm library:
 
 1. ```@HasManyField(related: typeof Model | string, foreignKey: string, localKey?: string)```
-2. ```@HasOne(related: typeof Model | string, foreignKey: string, localKey?: string)```
+2. ```@HasOneField(related: typeof Model | string, foreignKey: string, localKey?: string)```
 3. ```@BelongsToField(parent: typeof Model | string, foreignKey: string, ownerKey?: string)```
 4. ```@HasManyByField(parent: typeof Model | string, foreignKey: string, ownerKey?: string)```
 5. ```@HasManyThroughField(related: typeof Model | string, through: typeof Model | string, firstKey: string, secondKey: string, localKey?: string, secondLocalKey?: string)```
