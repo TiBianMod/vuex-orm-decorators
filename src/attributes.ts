@@ -18,6 +18,7 @@ export function PrimaryKey() {
  */
 export function Field(fieldType: Attribute) {
     return (target: Object, propertyName: string | symbol): void => {
+        console.log(propertyName);
         (target.constructor as any)._fields = (target.constructor as any)._fields || {};
         (target.constructor as any)._fields[propertyName] = fieldType;
     };

@@ -13,6 +13,7 @@ export function PrimaryKey() {
  */
 export function Field(fieldType) {
     return function (target, propertyName) {
+        console.log(propertyName);
         target.constructor._fields = target.constructor._fields || {};
         target.constructor._fields[propertyName] = fieldType;
     };

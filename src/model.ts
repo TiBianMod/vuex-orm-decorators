@@ -1,4 +1,5 @@
 import { Model } from '@vuex-orm/core';
+import ORMDatabase from './database';
 
 /**
  * Creates an vuex-orm Model
@@ -9,8 +10,10 @@ export function OrmModel(entityName: string, parentEntity?: string) {
         const model: Function = constructor;
 
         (constructor as any).entity = entityName;
-        (constructor as any).baseEntity = parentEntity;
+        if (parentEntity) { (constructor as any).baseEntity = parentEntity; }
         (constructor as any).fields = () => (constructor as any)._fields || {};
+
+        ORMDatabase.registerEntity(constructor as unknown as typeof Model);
 
         return constructor;
     };
