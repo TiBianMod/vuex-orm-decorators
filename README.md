@@ -131,6 +131,10 @@ class User extends Model{
 ```
 In this example the property ```uuid``` replaces the default ```id``` property as the primary key.
 
+### Single Table Inheritance
+
+If your model extends a base model, then STI inheritance needs to be used.  The base entity name needs to be provided as the second argument to the ORMModel decorator.  To use a discriminator field the third and fourth arguments provide the type mapping and property name overrides.
+
 ### Generic Types
 
 You can create the generic [attr field](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#generic-types) type using the ```@AttrField``` decorator.
