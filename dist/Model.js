@@ -1,4 +1,4 @@
-import ORMDatabase from './database';
+import { ORMDatabase } from './database';
 /**
  * Creates an vuex-orm Model
  * @param entityName The name of the entity to be used as the key for the state

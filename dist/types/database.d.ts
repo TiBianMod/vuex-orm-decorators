@@ -1,6 +1,6 @@
 import { Model } from '@vuex-orm/core';
 import { Plugin } from 'vuex';
-export default class ORMDatabase {
+export declare class ORMDatabase {
     private static _ormDatabase;
     private static _installed;
     static install(): Plugin<any>;

@@ -16,5 +16,5 @@ var ORMDatabase = /** @class */ (function () {
     ORMDatabase._installed = [];
     return ORMDatabase;
 }());
-export default ORMDatabase;
+export { ORMDatabase };
 //# sourceMappingURL=database.js.map

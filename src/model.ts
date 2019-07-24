@@ -1,5 +1,5 @@
 import { Model } from '@vuex-orm/core';
-import ORMDatabase from './database';
+import { ORMDatabase } from './database';
 
 /**
  * Creates an vuex-orm Model
