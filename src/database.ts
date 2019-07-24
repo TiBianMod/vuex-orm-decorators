@@ -2,7 +2,7 @@ import VuexORM, { Model, Database } from '@vuex-orm/core';
 import { Plugin } from 'vuex';
 
 
-export default class ORMDatabase {
+export class ORMDatabase {
 
     private static _ormDatabase: Database;
     private static _installed = <typeof Model[]>[];
