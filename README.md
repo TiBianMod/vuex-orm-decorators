@@ -48,6 +48,7 @@ If you do not want auto registered models, simply install the vanilla database a
 2. Set ```importHelpers: true```in ```tsconfig.json```.
 3. Set ```emitHelpers: true``` in ```tsconfig.json``` (only required in typescript 2)
 
+&nbsp;
 # Usage
 ### Basic Usage
 
@@ -84,7 +85,6 @@ class User extends Model{
 }
 ```
 
-&nbsp;
 ### Getters
 
 To create a fully reactive getter, simply add your getters to the model class:
@@ -109,7 +109,6 @@ class User extends Model{
 }
 ```
 
-&nbsp;
 ### Setting a Primary Key
 
 Rather than setting a [primary key](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primary-key) by setting the static property ```primaryKey``` with the magic string name of the property you want to be the primary key, you can simply annotate the property with the ```@PrimaryKey``` decorator as follows:
@@ -132,17 +131,14 @@ class User extends Model{
 ```
 In this example the property ```uuid``` replaces the default ```id``` property as the primary key.
 
-&nbsp;
 ### Generic Types
 
 You can create the generic [attr field](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#generic-types) type using the ```@AttrField``` decorator.
 
-&nbsp;
 ### Auto Increment
 
 To create auto [increment fields](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#auto-increment-type) which use the ```@Increment``` decorator.
 
-&nbsp;
 ### Primative Types
 
 Like the vuex-orm library, you can create primative fields using the following decorators:
@@ -151,7 +147,6 @@ Like the vuex-orm library, you can create primative fields using the following d
 2. ```@NumberField``` creates a [number](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
 3. ```@BooleanField``` creates a [boolean](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
 
-&nbsp;
 ### Creating Relationships
 
 You can create all relationships defined in the vuex-orm library.  All the relationship decorators take the exact same arguments as the vanilla vuex-orm library static functions.
