@@ -14,7 +14,7 @@ This documentation isn't supposed to be a replacement for the vuex-orm documenta
 If you have improvements or contributions to make, I will happily check and merge in pull requests.
 
 &nbsp;
-## Setup
+# Setup
 ### Installation
 
 ```
@@ -48,7 +48,7 @@ If you do not want auto registered models, simply install the vanilla database a
 2. Set ```importHelpers: true```in ```tsconfig.json```.
 3. Set ```emitHelpers: true``` in ```tsconfig.json``` (only required in typescript 2)
 
-## Usage
+# Usage
 ### Basic Usage
 
 Out of the box a vuex-orm model is defined as:
