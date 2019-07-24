@@ -5,15 +5,16 @@ Decorator Syntax for Vuex ORM for better type safety and a better experience.
 
 Typescript Decorators to simplify vuex-orm integration in typescript projects.  If you are using the [vue-module-decorators](https://github.com/championswimmer/vuex-module-decorators) or [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) packages then this will allow you to use the vuex-orm plugin in the same way.
 
-Using the decorators allows better type safety in your projects by allowing you to create conventional Typescript properties, and anotate them as fields.  Intellisense in Visual Studio Code just works with the annotations, where it doesn't in the vanilla plugin without boilerplate.  Removes the 'magic string' aspect of vuex-orm.
+Using the decorators allows better type safety in your projects by allowing you to create conventional Typescript properties, and anotate them as fields for a better experience.  Intellisense in Visual Studio Code just works with the annotations, where it doesn't in the vanilla plugin without boilerplate.
 
-This documentation isn't supposed to be a replacement for the vuex-orm documentation, if you are unfamiliar with the concepts the check out their documentation: https://vuex-orm.github.io/vuex-orm/guide/prologue/what-is-vuex-orm.html.  I have linked to relevant guide pages in their documation throughout this documentation.
+This documentation isn't supposed to be a replacement for the vuex-orm documentation, if you are unfamiliar with the concepts of vuex-orm then check out their documentation: https://vuex-orm.github.io/vuex-orm/guide/prologue/what-is-vuex-orm.html.  I have linked to relevant guide pages in their documation throughout this documentation.
 
 ##### Contribute
 
 If you have improvements or contributions to make, I will happily check and merge in pull requests.
 
 &nbsp;
+## Setup
 ### Installation
 
 ```
@@ -22,29 +23,46 @@ npm install -D vuex-orm-decorators
 
 This package targets es2015, if you need to target es5 then you will need to get VUE-CLI to transpile this package.
 
-&nbsp;
+### Auto Model Registration
+
+Models can automatically register themselves in the database.  To do so, instead of installing the vuex-orm database, install the wrapper provided by this library as follows:
+```typescript
+import Vue from 'vue';
+import Vuex from 'vuex';
+import { ORMDatabase } from 'vuex-orm-decorators'
+
+Vue.use(Vuex);
+
+export default new Vuex.Store({
+    state: {},
+    modules: {},
+    plugins: [ORMDatabase.install()],
+});
+```
+When you use a model it registers itself in the database automatically if it has not already.
+If you do not want auto registered models, simply install the vanilla database and register them as you would normally.
+
 ### Typescript
 
 1. Set ```ExperimentalDecorators``` to true.
 2. Set ```importHelpers: true```in ```tsconfig.json```.
 3. Set ```emitHelpers: true``` in ```tsconfig.json``` (only required in typescript 2)
 
-&nbsp;
-
+## Usage
 ### Basic Usage
 
 Out of the box a vuex-orm model is defined as:
 ```typescript
-import { Model } from '@vuex-orm/core'
+import { Model } from '@vuex-orm/core';
 
 class User extends Model {
-  static entity = 'users'
+  static entity = 'users';
 
   static fields () {
     return {
       id: this.attr(undefined),
       name: this.attr('')
-    }
+    };
   }
 }
 ```
@@ -72,8 +90,8 @@ class User extends Model{
 To create a fully reactive getter, simply add your getters to the model class:
 
 ```typescript
-import { Model } from '@vuex-orm/core'
-import { AttrField, StringField } from 'vuex-orm-decorators'
+import { Model } from '@vuex-orm/core';
+import { AttrField, StringField } from 'vuex-orm-decorators';
 
 
 @OrmModel('users')
@@ -97,8 +115,8 @@ class User extends Model{
 Rather than setting a [primary key](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primary-key) by setting the static property ```primaryKey``` with the magic string name of the property you want to be the primary key, you can simply annotate the property with the ```@PrimaryKey``` decorator as follows:
 
 ```typescript
-import { Model } from '@vuex-orm/core'
-import { AttrField, StringField } from 'vuex-orm-decorators'
+import { Model } from '@vuex-orm/core';
+import { AttrField, StringField } from 'vuex-orm-decorators';
 
 
 @OrmModel('users')
