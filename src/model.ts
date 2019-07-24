@@ -5,7 +5,7 @@ import { ORMDatabase } from './database';
  * Creates an vuex-orm Model
  * @param entityName The name of the entity to be used as the key for the state
  */
-export function OrmModel(entityName: string, parentEntity?: string, types?: { [key: string]: Model }, typeKey?: string) {
+export function OrmModel(entityName: string, parentEntity?: string, types?: { [key: string]: typeof Model }, typeKey?: string) {
     return function <Model extends Function>(constructor: Model): Model | void {
         const model: Function = constructor;
 
