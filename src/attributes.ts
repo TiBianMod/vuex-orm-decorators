@@ -43,7 +43,7 @@ export function IncrementField() {
  * @param defaultValue The default value for the field (if undiefine dthe default will be '')
  */
 export function AttrField(defaultValue?: any) {
-    return Field(Model.string(defaultValue));
+    return Field(Model.attr(defaultValue));
 }
 
 /**

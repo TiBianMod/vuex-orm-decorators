@@ -1,6 +1,6 @@
 {
     "name": "vuex-orm-decorators",
-    "version": "1.1.6",
+    "version": "1.1.7",
     "description": "Simple Typescript decorators to improve the vuex-orm experience in Typescript by introducing typed property access.",
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
@@ -22,8 +22,8 @@
     "author": "Scotley <scott@inspireweb.co.nz>",
     "license": "MIT",
     "devDependencies": {
-        "@vuex-orm/core": "^0.32.0",
-        "typescript": "^3.5.3",
+        "@vuex-orm/core": "^0.32.1",
+        "typescript": "^3.6.2",
         "vue": "^2.6.10",
         "vuex": "^3.1.1"
     }
