@@ -13,7 +13,9 @@ export function OrmModel(entityName, parentEntity, types, typeKey) {
             constructor.baseEntity = parentEntity;
         }
         // Seup the types and descriminator (if set)
-        constructor.types = types;
+        if (types) {
+            constructor.types = function () { return types; };
+        }
         if (types && typeKey) {
             constructor.typeKey = typeKey;
         }
