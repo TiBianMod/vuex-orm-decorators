@@ -15,7 +15,7 @@ export function OrmModel(entityName: string, parentEntity?: string, types?: { [k
         // Set the parent entity name on the model constructo (if present)
         if (parentEntity) { (constructor as any).baseEntity = parentEntity; }
 
-        // Seup the types and descriminator (if set)
+        // Setup the types and descriminator (if set)
         if (types) { (constructor as any).types = () => types; }
         if (types && typeKey) { (constructor as any).typeKey = typeKey; }
 

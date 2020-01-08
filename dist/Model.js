@@ -12,7 +12,7 @@ export function OrmModel(entityName, parentEntity, types, typeKey) {
         if (parentEntity) {
             constructor.baseEntity = parentEntity;
         }
-        // Seup the types and descriminator (if set)
+        // Setup the types and descriminator (if set)
         if (types) {
             constructor.types = function () { return types; };
         }
