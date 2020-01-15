@@ -6,7 +6,6 @@ jobs:
     name: Publish to NPM & GitHub Package Registry
     runs-on: ubuntu-latest
     if: contains(github.ref, 'master') # Publish it only if the push comes from the master branch
-    needs: build # We need to wait for the build to be committed before publishing
 
     steps:
       - name: Checkout repository
