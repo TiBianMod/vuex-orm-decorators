@@ -71,7 +71,7 @@ The defined fields don't gain type checking by Typescript in this way because th
 
 ```typescript
 import { Model } from '@vuex-orm/core'
-import { AttrField, StringField } from 'vuex-orm-decorators'
+import { AttrField, OrmModel, StringField } from 'vuex-orm-decorators'
 
 
 @OrmModel('users')
@@ -91,7 +91,7 @@ To create a fully reactive getter, simply add your getters to the model class:
 
 ```typescript
 import { Model } from '@vuex-orm/core';
-import { AttrField, StringField } from 'vuex-orm-decorators';
+import { AttrField, OrmModel, StringField } from 'vuex-orm-decorators';
 
 
 @OrmModel('users')
@@ -115,7 +115,7 @@ Rather than setting a [primary key](https://vuex-orm.github.io/vuex-orm/guide/mo
 
 ```typescript
 import { Model } from '@vuex-orm/core';
-import { AttrField, StringField } from 'vuex-orm-decorators';
+import { AttrField, OrmModel, StringField } from 'vuex-orm-decorators';
 
 
 @OrmModel('users')
