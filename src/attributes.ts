@@ -32,6 +32,14 @@ export function StringField(defaultValue?: string) {
 }
 
 /**
+ * Adds the property as a uid field
+ * @param value optional function that makes a custom a uid
+ */
+export function UidField(value?: () => string | number) {
+    return Field(Model.uid(value));
+}
+
+/**
  * Adds the property as an incremental field
  */
 export function IncrementField() {
