@@ -20,9 +20,10 @@ export function Field(fieldType) {
 /**
  * Adds the property as a string typed field
  * @param defaultValue The default value for the field (if undefined the default will be '')
+ * @param mutator Mutate the given value
  */
-export function StringField(defaultValue) {
-    return Field(Model.string(defaultValue || ''));
+export function StringField(defaultValue, mutator) {
+    return Field(Model.string(defaultValue || '', mutator));
 }
 /**
  * Adds the property as a uid field
@@ -40,16 +41,18 @@ export function IncrementField() {
 /**
  * Adds the property as a generic attribute field
  * @param defaultValue The default value for the field (if undiefine dthe default will be '')
+ * @param mutator Mutate the given value
  */
-export function AttrField(defaultValue) {
-    return Field(Model.attr(defaultValue));
+export function AttrField(defaultValue, mutator) {
+    return Field(Model.attr(defaultValue, mutator));
 }
 /**
  * Adds the property as a number typed field
  * @param defaultValue The default value for the field (if undefined the default will be 0)
+ * @param mutator Mutate the given value
  */
-export function NumberField(defaultValue) {
-    return Field(Model.number(defaultValue || 0));
+export function NumberField(defaultValue, mutator) {
+    return Field(Model.number(defaultValue || 0, mutator));
 }
 /**
  * Adds the property as a boolean typed field
