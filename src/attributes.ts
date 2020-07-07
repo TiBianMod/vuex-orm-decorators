@@ -1,4 +1,4 @@
-import { Model, Attribute, Uid } from '@vuex-orm/core';
+import { Model, Attribute } from '@vuex-orm/core';
 import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
 
 
