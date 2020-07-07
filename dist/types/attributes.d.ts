@@ -26,7 +26,7 @@ export declare function UidField(value?: () => string | number): (target: Object
 export declare function IncrementField(): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as a generic attribute field
- * @param defaultValue The default value for the field (if undiefine dthe default will be '')
+ * @param defaultValue The default value for the field (if undefined the default will be '')
  * @param mutator Mutate the given value
  */
 export declare function AttrField(defaultValue?: any, mutator?: Mutator<any>): (target: Object, propertyName: string | symbol) => void;
@@ -39,8 +39,9 @@ export declare function NumberField(defaultValue?: number, mutator?: Mutator<num
 /**
  * Adds the property as a boolean typed field
  * @param defaultValue The default value for the field (if undefined the default will be FALSE)
+ * @param mutator Mutate the given value
  */
-export declare function BooleanField(value: any, mutator?: Mutator<boolean | null>): (target: Object, propertyName: string | symbol) => void;
+export declare function BooleanField(defaultValue: any, mutator?: Mutator<boolean | null>): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as a 'Has Many' relationship field
  * @param related The class of the related model

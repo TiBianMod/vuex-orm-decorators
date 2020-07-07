@@ -40,7 +40,7 @@ export function IncrementField() {
 }
 /**
  * Adds the property as a generic attribute field
- * @param defaultValue The default value for the field (if undiefine dthe default will be '')
+ * @param defaultValue The default value for the field (if undefined the default will be '')
  * @param mutator Mutate the given value
  */
 export function AttrField(defaultValue, mutator) {
@@ -57,9 +57,10 @@ export function NumberField(defaultValue, mutator) {
 /**
  * Adds the property as a boolean typed field
  * @param defaultValue The default value for the field (if undefined the default will be FALSE)
+ * @param mutator Mutate the given value
  */
-export function BooleanField(value, mutator) {
-    return Field(Model.boolean(value, mutator));
+export function BooleanField(defaultValue, mutator) {
+    return Field(Model.boolean(defaultValue, mutator));
 }
 /**
  * Adds the property as a 'Has Many' relationship field
