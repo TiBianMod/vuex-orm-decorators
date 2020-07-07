@@ -139,6 +139,10 @@ If your model extends a base model, then STI inheritance needs to be used.  The 
 
 You can create the generic [attr field](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#generic-types) type using the ```@AttrField``` decorator.
 
+### Uid
+
+To create [uid field](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#uid-type) which use the ```@UidField``` decorator.
+
 ### Auto Increment
 
 To create auto [increment fields](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#auto-increment-type) which use the ```@Increment``` decorator.
