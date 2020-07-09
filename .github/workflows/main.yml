@@ -1,47 +1,16 @@
-name: Auto-publish
+name: NPM Publish
 on: push
 
 jobs:
   publish:
-    name: Publish to NPM & GitHub Package Registry
     runs-on: ubuntu-latest
-    if: contains(github.ref, 'master') # Publish it only if the push comes from the master branch
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1.0.0
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-         ref: master
-
-      - name: Set up Node.js for NPM
-        if: steps.check.outputs.changed == 'true'
-        uses: actions/setup-node@v1.2.0
+          node-version: 10
+      - run: npm install
+      - run: npm test
+      - uses: JS-DevTools/npm-publish@v1
         with:
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies
-        if: steps.check.outputs.changed == 'true'
-        run: npm install
-
-      - name: Publish package to NPM
-        if: steps.check.outputs.changed == 'true'
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Set up Node.js for GPR
-        if: steps.check.outputs.changed == 'true'
-        uses: actions/setup-node@v1.2.0
-        with:
-          registry-url: 'https://npm.pkg.github.com/'
-          scope: '@endbug'
-
-      - name: Set up package for GPR # You need to make sure you package name has the scope needed for GPR
-        if: steps.check.outputs.changed == 'true'
-        run: npm run gpr-setup
-
-      - name: Publish package to GPR
-        if: steps.check.outputs.changed == 'true'
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.NPM_AUTH_TOKEN }}
