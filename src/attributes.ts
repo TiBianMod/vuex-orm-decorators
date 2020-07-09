@@ -26,9 +26,10 @@ export function Field(fieldType: Attribute) {
 /**
  * Adds the property as a string typed field
  * @param defaultValue The default value for the field (if undefined the default will be '')
+ * @param mutator Mutate the given value
  */
-export function StringField(defaultValue?: string) {
-    return Field(Model.string(defaultValue || ''));
+export function StringField(defaultValue?: string, mutator?: Mutator<string | null>) {
+    return Field(Model.string(defaultValue || '', mutator));
 }
 
 /**
@@ -48,26 +49,29 @@ export function IncrementField() {
 
 /**
  * Adds the property as a generic attribute field
- * @param defaultValue The default value for the field (if undiefine dthe default will be '')
+ * @param defaultValue The default value for the field (if undefined the default will be '')
+ * @param mutator Mutate the given value
  */
-export function AttrField(defaultValue?: any) {
-    return Field(Model.attr(defaultValue));
+export function AttrField(defaultValue?: any, mutator?: Mutator<any>) {
+    return Field(Model.attr(defaultValue, mutator));
 }
 
 /**
  * Adds the property as a number typed field
  * @param defaultValue The default value for the field (if undefined the default will be 0)
+ * @param mutator Mutate the given value
  */
-export function NumberField(defaultValue?: number) {
-    return Field(Model.number(defaultValue || 0));
+export function NumberField(defaultValue?: number, mutator?: Mutator<number | null>) {
+    return Field(Model.number(defaultValue || 0, mutator));
 }
 
 /**
  * Adds the property as a boolean typed field
  * @param defaultValue The default value for the field (if undefined the default will be FALSE)
+ * @param mutator Mutate the given value
  */
-export function BooleanField(value: any, mutator?: Mutator<boolean | null>) {
-    return Field(Model.boolean(value, mutator));
+export function BooleanField(defaultValue: any, mutator?: Mutator<boolean | null>) {
+    return Field(Model.boolean(defaultValue, mutator));
 }
 
 /**
