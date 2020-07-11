@@ -48,6 +48,21 @@ If you do not want auto registered models, simply install the vanilla database a
 2. Set ```importHelpers: true```in ```tsconfig.json```.
 3. Set ```emitHelpers: true``` in ```tsconfig.json``` (only required in typescript 2)
 
+### Nuxt.js
+As Nuxt.js uses cjs modules you need to transpile the library. Add the following to the nuxt.config.js
+```javascript
+build: {
+  transpile: [
+    'vuex-orm-decorators'
+  ]
+}
+```
+If you want to register models automatically do not install vuex-orm database, just export plugin from store/index.js
+
+```javascript
+import { ORMDatabase } from 'vuex-orm-decorators'
+export const plugins = [ ORMDatabase.install()]
+```
 &nbsp;
 # Usage
 ### Basic Usage
