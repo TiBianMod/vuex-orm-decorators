@@ -158,9 +158,12 @@ You can create the generic [attr field](https://vuex-orm.github.io/vuex-orm/guid
 
 To create [uid field](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#uid-type) which use the ```@UidField``` decorator.
 
-### Auto Increment
+### ~~Auto Increment~~ (deprecated)
 
-To create auto [increment fields](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#auto-increment-type) which use the ```@Increment``` decorator.
+~~To create auto [increment fields](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#auto-increment-type) which use the ```@Increment``` decorator.~~
+
+Use `UidField` decorator instead.
+
 
 ### Primative Types
 

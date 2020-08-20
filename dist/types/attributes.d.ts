@@ -22,6 +22,7 @@ export declare function StringField(defaultValue?: string, mutator?: Mutator<str
 export declare function UidField(value?: () => string | number): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as an incremental field
+ * @deprecated Use `UidField` decorator instead.
  */
 export declare function IncrementField(): (target: Object, propertyName: string | symbol) => void;
 /**

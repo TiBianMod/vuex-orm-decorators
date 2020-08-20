@@ -34,6 +34,7 @@ export function UidField(value) {
 }
 /**
  * Adds the property as an incremental field
+ * @deprecated Use `UidField` decorator instead.
  */
 export function IncrementField() {
     return Field(Model.increment());
