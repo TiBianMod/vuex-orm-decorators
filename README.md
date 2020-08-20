@@ -5,9 +5,9 @@ Decorator Syntax for Vuex ORM for better type safety and a better experience.
 
 Typescript Decorators to simplify vuex-orm integration in typescript projects.  If you are using the [vue-module-decorators](https://github.com/championswimmer/vuex-module-decorators) or [vue-property-decorator](https://github.com/kaorun343/vue-property-decorator) packages then this will allow you to use the vuex-orm plugin in the same way.
 
-Using the decorators allows better type safety in your projects by allowing you to create conventional Typescript properties, and anotate them as fields for a better experience.  Intellisense in Visual Studio Code just works with the annotations, where it doesn't in the vanilla plugin without boilerplate.
+Using the decorators allows better type safety in your projects by allowing you to create conventional Typescript properties, and annotate them as fields for a better experience.  Intellisense in Visual Studio Code just works with the annotations, where it doesn't in the vanilla plugin without boilerplate.
 
-This documentation isn't supposed to be a replacement for the vuex-orm documentation, if you are unfamiliar with the concepts of vuex-orm then check out their documentation: https://vuex-orm.github.io/vuex-orm/guide/prologue/what-is-vuex-orm.html.  I have linked to relevant guide pages in their documation throughout this documentation.
+This documentation isn't supposed to be a replacement for the vuex-orm documentation, if you are unfamiliar with the concepts of vuex-orm then check out their documentation: https://vuex-orm.github.io/vuex-orm/guide/prologue/what-is-vuex-orm.html.  I have linked to relevant guide pages in their documentation throughout this documentation.
 
 ##### Contribute
 
@@ -165,9 +165,9 @@ To create [uid field](https://vuex-orm.github.io/vuex-orm/guide/model/defining-m
 Use `UidField` decorator instead.
 
 
-### Primative Types
+### Primitive Types
 
-Like the vuex-orm library, you can create primative fields using the following decorators:
+Like the vuex-orm library, you can create primitive fields using the following decorators:
 
 1. ```@StringField``` creates a [string](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
 2. ```@NumberField``` creates a [number](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
