@@ -1,6 +1,5 @@
-import VuexORM, { Model, Database } from '@vuex-orm/core';
+import VuexORM, { Model } from '@vuex-orm/core';
 import { Plugin } from 'vuex';
-
 
 export class ORMDatabase {
 
@@ -13,7 +12,7 @@ export class ORMDatabase {
 
     public static registerEntity(model: typeof Model) {
         if (this._installed.indexOf(model) !== -1) {
-            console.error(`Unable to register entity ${model.name}.  Entity already registered.`)
+            console.error(`Unable to register entity ${model.name}.  Entity already registered.`);
             return;
         }
         ORMDatabase._ormDatabase.register(model);

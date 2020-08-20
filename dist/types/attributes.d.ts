@@ -1,4 +1,4 @@
-import { Model, Attribute } from '@vuex-orm/core';
+import { Attribute, Model } from '@vuex-orm/core';
 import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
 /**
  * Sets the property as the primary key of the model
