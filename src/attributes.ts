@@ -28,8 +28,8 @@ export function Field(fieldType: Attribute) {
  * @param defaultValue The default value for the field (if undefined the default will be '')
  * @param mutator Mutate the given value
  */
-export function StringField(defaultValue?: string, mutator?: Mutator<string | null>) {
-    return Field(Model.string(defaultValue || '', mutator));
+export function StringField(defaultValue?: string | null, mutator?: Mutator<string>) {
+    return Field(Model.string(defaultValue || '', mutator as any));
 }
 
 /**
@@ -62,8 +62,8 @@ export function AttrField(defaultValue?: any, mutator?: Mutator<any>) {
  * @param defaultValue The default value for the field (if undefined the default will be 0)
  * @param mutator Mutate the given value
  */
-export function NumberField(defaultValue?: number, mutator?: Mutator<number | null>) {
-    return Field(Model.number(defaultValue || 0, mutator));
+export function NumberField(defaultValue?: number | null, mutator?: Mutator<number>) {
+    return Field(Model.number(defaultValue || 0, mutator as any));
 }
 
 /**
@@ -71,8 +71,8 @@ export function NumberField(defaultValue?: number, mutator?: Mutator<number | nu
  * @param defaultValue The default value for the field (if undefined the default will be FALSE)
  * @param mutator Mutate the given value
  */
-export function BooleanField(defaultValue?: any, mutator?: Mutator<boolean | null>) {
-    return Field(Model.boolean(defaultValue || false, mutator));
+export function BooleanField(defaultValue?: boolean | null, mutator?: Mutator<boolean>) {
+    return Field(Model.boolean(defaultValue || false, mutator as any));
 }
 
 /**
