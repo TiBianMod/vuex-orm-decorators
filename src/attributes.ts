@@ -71,8 +71,8 @@ export function NumberField(defaultValue?: number, mutator?: Mutator<number | nu
  * @param defaultValue The default value for the field (if undefined the default will be FALSE)
  * @param mutator Mutate the given value
  */
-export function BooleanField(defaultValue: any, mutator?: Mutator<boolean | null>) {
-    return Field(Model.boolean(defaultValue, mutator));
+export function BooleanField(defaultValue?: any, mutator?: Mutator<boolean | null>) {
+    return Field(Model.boolean(defaultValue || false, mutator));
 }
 
 /**

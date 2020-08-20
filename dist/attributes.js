@@ -61,7 +61,7 @@ export function NumberField(defaultValue, mutator) {
  * @param mutator Mutate the given value
  */
 export function BooleanField(defaultValue, mutator) {
-    return Field(Model.boolean(defaultValue, mutator));
+    return Field(Model.boolean(defaultValue || false, mutator));
 }
 /**
  * Adds the property as a 'Has Many' relationship field

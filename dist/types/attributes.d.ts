@@ -42,7 +42,7 @@ export declare function NumberField(defaultValue?: number, mutator?: Mutator<num
  * @param defaultValue The default value for the field (if undefined the default will be FALSE)
  * @param mutator Mutate the given value
  */
-export declare function BooleanField(defaultValue: any, mutator?: Mutator<boolean | null>): (target: Object, propertyName: string | symbol) => void;
+export declare function BooleanField(defaultValue?: any, mutator?: Mutator<boolean | null>): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as a 'Has Many' relationship field
  * @param related The class of the related model
