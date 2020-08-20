@@ -61,7 +61,7 @@ If you want to register models automatically do not install vuex-orm database, j
 
 ```javascript
 import { ORMDatabase } from 'vuex-orm-decorators'
-export const plugins = [ ORMDatabase.install()]
+export const plugins = [ORMDatabase.install()]
 ```
 &nbsp;
 # Usage
@@ -72,14 +72,16 @@ Out of the box a vuex-orm model is defined as:
 import { Model } from '@vuex-orm/core';
 
 class User extends Model {
-  static entity = 'users';
 
-  static fields () {
-    return {
-      id: this.attr(undefined),
-      name: this.attr('')
-    };
-  }
+    static entity = 'users';
+    
+    static fields() {
+        return {
+            id: this.attr(undefined),
+            name: this.attr('')
+        };
+    }
+
 }
 ```
 The defined fields don't gain type checking by Typescript in this way because they are never defined as properties of the model class.  With this decorator library though it allows you to write the same in the following way to achieve type checking on your queried models:
@@ -88,15 +90,15 @@ The defined fields don't gain type checking by Typescript in this way because th
 import { Model } from '@vuex-orm/core'
 import { AttrField, OrmModel, StringField } from 'vuex-orm-decorators'
 
-
 @OrmModel('users')
-class User extends Model{
+class User extends Model {
 
-    @AttrField(undefined)
+    @AttrField()
     public id!: number;
 
     @StringField()
     public name!: string;
+
 }
 ```
 
@@ -108,19 +110,19 @@ To create a fully reactive getter, simply add your getters to the model class:
 import { Model } from '@vuex-orm/core';
 import { AttrField, OrmModel, StringField } from 'vuex-orm-decorators';
 
-
 @OrmModel('users')
-class User extends Model{
+class User extends Model {
 
-    @AttrField(undefined)
+    @AttrField()
     public id!: number;
 
     @StringField()
     public name!: string;
 
-    public get lowerName(){
+    public get lowerName() {
         return this.name.toLowerCase();
     }
+
 }
 ```
 
@@ -132,16 +134,16 @@ Rather than setting a [primary key](https://vuex-orm.github.io/vuex-orm/guide/mo
 import { Model } from '@vuex-orm/core';
 import { AttrField, OrmModel, StringField } from 'vuex-orm-decorators';
 
-
 @OrmModel('users')
-class User extends Model{
+class User extends Model {
 
     @PrimaryKey()
-    @AttrField(undefined)
+    @AttrField()
     public uuid!: number;
 
     @StringField()
     public name!: string;
+
 }
 ```
 In this example the property ```uuid``` replaces the default ```id``` property as the primary key.
