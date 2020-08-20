@@ -54,7 +54,7 @@ export function IncrementField() {
  * @param mutator Mutate the given value
  */
 export function AttrField(defaultValue?: any, mutator?: Mutator<any>) {
-    return Field(Model.attr(defaultValue, mutator));
+    return Field(Model.attr(defaultValue || '', mutator));
 }
 
 /**

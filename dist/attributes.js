@@ -45,7 +45,7 @@ export function IncrementField() {
  * @param mutator Mutate the given value
  */
 export function AttrField(defaultValue, mutator) {
-    return Field(Model.attr(defaultValue, mutator));
+    return Field(Model.attr(defaultValue || '', mutator));
 }
 /**
  * Adds the property as a number typed field
