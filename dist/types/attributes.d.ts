@@ -1,4 +1,4 @@
-import { Model, Attribute } from '@vuex-orm/core';
+import { Attribute, Model } from '@vuex-orm/core';
 import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
 /**
  * Sets the property as the primary key of the model
@@ -14,7 +14,7 @@ export declare function Field(fieldType: Attribute): (target: Object, propertyNa
  * @param defaultValue The default value for the field (if undefined the default will be '')
  * @param mutator Mutate the given value
  */
-export declare function StringField(defaultValue?: string, mutator?: Mutator<string | null>): (target: Object, propertyName: string | symbol) => void;
+export declare function StringField(defaultValue?: string | null, mutator?: Mutator<string>): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as a uid field
  * @param value optional function that makes a custom a uid
@@ -22,6 +22,7 @@ export declare function StringField(defaultValue?: string, mutator?: Mutator<str
 export declare function UidField(value?: () => string | number): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as an incremental field
+ * @deprecated Use `UidField` decorator instead.
  */
 export declare function IncrementField(): (target: Object, propertyName: string | symbol) => void;
 /**
@@ -35,13 +36,13 @@ export declare function AttrField(defaultValue?: any, mutator?: Mutator<any>): (
  * @param defaultValue The default value for the field (if undefined the default will be 0)
  * @param mutator Mutate the given value
  */
-export declare function NumberField(defaultValue?: number, mutator?: Mutator<number | null>): (target: Object, propertyName: string | symbol) => void;
+export declare function NumberField(defaultValue?: number | null, mutator?: Mutator<number>): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as a boolean typed field
  * @param defaultValue The default value for the field (if undefined the default will be FALSE)
  * @param mutator Mutate the given value
  */
-export declare function BooleanField(defaultValue: any, mutator?: Mutator<boolean | null>): (target: Object, propertyName: string | symbol) => void;
+export declare function BooleanField(defaultValue?: boolean | null, mutator?: Mutator<boolean>): (target: Object, propertyName: string | symbol) => void;
 /**
  * Adds the property as a 'Has Many' relationship field
  * @param related The class of the related model

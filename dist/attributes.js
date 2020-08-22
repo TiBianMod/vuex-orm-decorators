@@ -34,6 +34,7 @@ export function UidField(value) {
 }
 /**
  * Adds the property as an incremental field
+ * @deprecated Use `UidField` decorator instead.
  */
 export function IncrementField() {
     return Field(Model.increment());
@@ -44,7 +45,7 @@ export function IncrementField() {
  * @param mutator Mutate the given value
  */
 export function AttrField(defaultValue, mutator) {
-    return Field(Model.attr(defaultValue, mutator));
+    return Field(Model.attr(defaultValue || '', mutator));
 }
 /**
  * Adds the property as a number typed field
@@ -60,7 +61,7 @@ export function NumberField(defaultValue, mutator) {
  * @param mutator Mutate the given value
  */
 export function BooleanField(defaultValue, mutator) {
-    return Field(Model.boolean(defaultValue, mutator));
+    return Field(Model.boolean(defaultValue || false, mutator));
 }
 /**
  * Adds the property as a 'Has Many' relationship field
