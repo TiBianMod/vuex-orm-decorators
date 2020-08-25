@@ -16,8 +16,24 @@ export function PrimaryKey() {
  */
 export function Field(fieldType: Attribute) {
     return (target: Object, propertyName: string | symbol): void => {
-        (target.constructor as any)._fields = (target.constructor as any)._fields || {};
-        (target.constructor as any)._fields[propertyName] = fieldType;
+        const constructor = (target.constructor as any);
+
+        if (constructor.entity) {
+            constructor._fields = constructor.fields() || {};
+
+            constructor.fields = () => {
+                const fields = constructor._fields || {};
+
+                return {
+                    ...constructor.prototype?._super?.fields(),
+                    ...fields
+                };
+            };
+        } else {
+            constructor._fields = constructor._fields || {};
+        }
+
+        constructor._fields[propertyName] = fieldType;
     };
 }
 
@@ -134,4 +150,3 @@ export function MorphToManyField(related: typeof Model | string, pivot: typeof M
 export function MorphedByManyField(related: typeof Model | string, pivot: typeof Model | string, relatedId: string, id: string, type: string, parentKey?: string, relatedKey?: string) {
     return Field(Model.morphedByMany(related, pivot, relatedId, id, type, parentKey, relatedKey));
 }
-

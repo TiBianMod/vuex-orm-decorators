@@ -3,7 +3,7 @@ import { Model } from '@vuex-orm/core';
  * Sets the property as the primary key of the model
  */
 export function PrimaryKey() {
-    return function (target, propertyName) {
+    return (target, propertyName) => {
         target.constructor.primaryKey = propertyName;
     };
 }
@@ -12,9 +12,20 @@ export function PrimaryKey() {
  * @param fieldType The field attribute
  */
 export function Field(fieldType) {
-    return function (target, propertyName) {
-        target.constructor._fields = target.constructor._fields || {};
-        target.constructor._fields[propertyName] = fieldType;
+    return (target, propertyName) => {
+        const constructor = target.constructor;
+        if (constructor.entity) {
+            constructor._fields = constructor.fields() || {};
+            constructor.fields = () => {
+                var _a, _b;
+                const fields = constructor._fields || {};
+                return Object.assign(Object.assign({}, (_b = (_a = constructor.prototype) === null || _a === void 0 ? void 0 : _a._super) === null || _b === void 0 ? void 0 : _b.fields()), fields);
+            };
+        }
+        else {
+            constructor._fields = constructor._fields || {};
+        }
+        constructor._fields[propertyName] = fieldType;
     };
 }
 /**

@@ -150,7 +150,83 @@ In this example the property ```uuid``` replaces the default ```id``` property a
 
 ### Single Table Inheritance
 
-If your model extends a base model, then STI inheritance needs to be used.  The base entity name needs to be provided as the second argument to the ORMModel decorator.  To use a discriminator field the third and fourth arguments provide the type mapping and property name overrides.
+If your model extends a base model, then STI inheritance needs to be used. The base entity name needs to be provided as the second argument to the ORMModel decorator and as third argument provide the discriminator fields:
+
+> Person : Base Entity
+
+```typescript
+@OrmModel('persons')
+class Person extends Model {
+
+    @AttrField()
+    public id!: string;
+
+    @StringField()
+    public name!: string;
+
+}
+```
+
+> Teenager extends Person
+
+```typescript
+@OrmModel('teenagers', 'persons', {
+    PERSON: Person,
+    TEENAGER: Teenager
+})
+class Teenager extends Person {
+
+    @StringField() school!: string;
+
+}
+```
+
+> Adult extends Person
+
+```typescript
+@OrmModel('adults', 'persons', {
+    PERSON: Person,
+    ADULT: Adult
+})
+class Adult extends Person {
+
+    @StringField() job!: string;
+
+}
+```
+
+> Now, you can create mixed types of records at once.
+```typescript
+Person.insert({
+    data: [
+        { type: 'PERSON', id: 1, name: 'John Doe' },
+        { type: 'TEENAGER', id: 2, name: 'Jane Doe', school: '22nd Best School' },
+        { type: 'ADULT', id: 3, name: 'Jane Roe', job: 'Software Engineer' }
+    ]
+});
+```
+
+##### Discriminator Field Override
+
+> You may define a `static typeKey` on the base entity of your hierarchy if you want to change the default discriminator field name.
+
+```typescript
+@OrmModel('persons')
+class Person extends Model {
+
+    /**
+     * The discriminator key to be used for the model when inheritance is used.
+     */
+    static typeKey = 'PERSON';
+
+    @AttrField()
+    public id!: string;
+
+    @StringField()
+    public name!: string;
+
+}
+```
 
 ### Generic Types
 

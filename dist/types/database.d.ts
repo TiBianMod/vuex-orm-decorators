@@ -3,7 +3,8 @@ import { Plugin } from 'vuex';
 import { Options } from '@vuex-orm/core/lib/store/install';
 export declare class ORMDatabase {
     private static _ormDatabase;
-    private static _installed;
+    private static _models;
     static install(options?: Options): Plugin<any>;
     static registerEntity(model: typeof Model): void;
+    static models(): (typeof Model)[];
 }

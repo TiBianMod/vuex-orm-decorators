@@ -5,17 +5,27 @@ import { Options } from '@vuex-orm/core/lib/store/install';
 export class ORMDatabase {
 
     private static _ormDatabase = new VuexORM.Database();
-    private static _installed = <typeof Model[]>[];
+
+    private static _models = <typeof Model[]>[];
 
     public static install(options?: Options): Plugin<any> {
+        this._models.forEach(model => this._ormDatabase.register(model));
+
         return VuexORM.install(ORMDatabase._ormDatabase, options);
     }
 
     public static registerEntity(model: typeof Model) {
-        if (this._installed.indexOf(model) !== -1) {
-            console.error(`Unable to register entity ${model.name}.  Entity already registered.`);
+        if (this._models.includes(model)) {
+            console.error(`Unable to register entity '${model.name}'. Entity '${model.name}' is already registered.`);
+
             return;
         }
-        ORMDatabase._ormDatabase.register(model);
+
+        this._models.push(model);
     }
+
+    public static models() {
+        return this._models;
+    }
+
 }
