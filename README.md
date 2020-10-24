@@ -149,6 +149,50 @@ class User extends Model {
 }
 ```
 
+### Default Values
+
+If undefined the default values for the `@AttrField`, `@StringField`, `@NumberField`, and `@BooleanField` decorator will be:
+
+```typescript
+@OrmModel('users')
+class User extends Model {
+
+    // Default value: ''
+    @AttrField() email!: string;
+    
+    // Default value: ''
+    @StringField() name!: string;
+    
+    // Default value: 0
+    @NumberField() age!: number;
+
+    // Default value: false
+    @BooleanField() active!: boolean;
+
+}
+```
+
+If you want to set the field as `nullable`, pass a `null` value as default value, this will also set the `isNullable` Type to `true`:
+
+```typescript
+@OrmModel('users')
+class User extends Model {
+
+    // Default value: null, isNullable: true
+    @AttrField(null) email!: string;
+    
+    // Default value: null, isNullable: true
+    @StringField(null) name!: string;
+    
+    // Default value: null, isNullable: true
+    @NumberField(null) age!: number;
+
+    // Default value: null, isNullable: true
+    @BooleanField(null) active!: boolean;
+
+}
+```
+
 ### Setting a Primary Key
 
 Rather than setting a [primary key](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primary-key) by setting the static property `primaryKey` with the magic string name of the property you want to be the primary key, you can simply annotate the property with the `@PrimaryKey` decorator as follows:
@@ -255,32 +299,26 @@ You can create the generic [attr field](https://vuex-orm.github.io/vuex-orm/guid
 
 To create [uid field](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#uid-type) which use the `@UidField` decorator.
 
-### ~~Auto Increment~~ (deprecated)
-
-~~To create auto [increment fields](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#auto-increment-type) which use the `@Increment` decorator.~~
-
-**Use `UidField` decorator instead.**
-
 ### Primitive Types
 
 Like the vuex-orm library, you can create primitive fields using the following decorators:
 
-1. `@StringField` creates a [string](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
-2. `@NumberField` creates a [number](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
-3. `@BooleanField` creates a [boolean](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
+* `@StringField` creates a [string](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
+* `@NumberField` creates a [number](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
+* `@BooleanField` creates a [boolean](https://vuex-orm.github.io/vuex-orm/guide/model/defining-models.html#primitive-types) field
 
 ### Creating Relationships
 
 You can create all relationships defined in the vuex-orm library.  All the relationship decorators take the exact same arguments as the vanilla vuex-orm library static functions.
 
-1. `@HasManyField` creates a [HasMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-many) relationship field
-2. `@HasOneField` creates a [HasOne](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one) relationship field
-3. `@BelongsToField` creates an inverse [HasOne](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-inverse) relationship field
-4. `@HasManyByField` creates a [HasManyBy](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#has-many-by) relationship field
-5. `@HasManyThroughField` creates a [HasManyThrough](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#has-many-through) relationship field
-6. `@BelongsToManyField` creates a [BelongsToMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#many-to-many) relationship field
-7. `@MorphToField` creates a [MorphTo](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-polymorphic) relationship field
-8. `@MorphOneField` creates a [MorphOne](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-polymorphic) relationship field
-9. `@MorphManyField` creates a [MorphMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-polymorphic) relationship field
-10. `@MorphToManyField` creates a [MorphToMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#many-to-many-polymorphic) relationship field
-11. `@MorphedByManyField` creates a [MorphedByMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#defining-the-inverse-of-the-relationship-2) relationship field
+* `@HasManyField` creates a [HasMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-many) relationship field
+* `@HasOneField` creates a [HasOne](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one) relationship field
+* `@BelongsToField` creates an inverse [HasOne](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-inverse) relationship field
+* `@HasManyByField` creates a [HasManyBy](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#has-many-by) relationship field
+* `@HasManyThroughField` creates a [HasManyThrough](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#has-many-through) relationship field
+* `@BelongsToManyField` creates a [BelongsToMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#many-to-many) relationship field
+* `@MorphToField` creates a [MorphTo](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-polymorphic) relationship field
+* `@MorphOneField` creates a [MorphOne](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-polymorphic) relationship field
+* `@MorphManyField` creates a [MorphMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#one-to-one-polymorphic) relationship field
+* `@MorphToManyField` creates a [MorphToMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#many-to-many-polymorphic) relationship field
+* `@MorphedByManyField` creates a [MorphedByMany](https://vuex-orm.github.io/vuex-orm/guide/model/relationships.html#defining-the-inverse-of-the-relationship-2) relationship field
