@@ -1,2 +1,6 @@
-node_modules/
+node_modules
 .idea
+.vscode
+coverage
+dist
+.DS_Store
