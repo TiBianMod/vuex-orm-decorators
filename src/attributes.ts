@@ -55,14 +55,6 @@ export function UidField(value?: () => string | number) {
 }
 
 /**
- * Adds the property as an incremental field
- * @deprecated Use `UidField` decorator instead.
- */
-export function IncrementField() {
-    return Field(Model.increment());
-}
-
-/**
  * Adds the property as a generic attribute field
  * @param defaultValue The default value for the field (if undefined the default will be '')
  * @param mutator Mutate the given value
