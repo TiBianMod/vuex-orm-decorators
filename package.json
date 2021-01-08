@@ -6,7 +6,8 @@
     "types": "dist/types/index.d.ts",
     "typings": "dist/types/index.d.ts",
     "scripts": {
-        "build": "tsc",
+        "build": "yarn lint && yarn test && tsc --rootDir src",
+        "lint": "eslint . --ext .ts",
         "test": "jest",
         "test:coverage": "jest --collect-coverage"
     },
