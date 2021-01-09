@@ -1,5 +1,5 @@
 import { Plugin } from '@vuex-orm/core/lib/plugins/use';
-import DateType from '@/plugins/Date/DateType';
+import DateType from './DateType';
 import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
 
 const plugin: Plugin = {

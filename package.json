@@ -1,12 +1,12 @@
 {
     "name": "vuex-orm-decorators",
-    "version": "2.0.0-beta.3",
+    "version": "2.0.0-beta.4",
     "description": "Simple Typescript decorators to improve the vuex-orm experience in Typescript by introducing typed property access.",
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
     "typings": "dist/types/index.d.ts",
     "scripts": {
-        "build": "yarn lint && yarn test && tsc --rootDir src && rm -rf dist/{plugins,types/plugins}",
+        "build": "yarn lint && yarn test && tsc --rootDir src && rm -rf dist/types/plugins",
         "lint": "eslint . --ext .ts",
         "test": "jest",
         "test:coverage": "jest --collect-coverage"
