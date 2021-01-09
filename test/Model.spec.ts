@@ -1,4 +1,4 @@
-import { AttrField, BooleanField, NumberField } from '@/attributes';
+import { BooleanField, NumberField, StringField } from '@/attributes';
 import { Model } from '@vuex-orm/core';
 import { ORMDatabase } from '@/database';
 import { OrmModel } from '@/model';
@@ -73,11 +73,11 @@ describe('OrmModel', () => {
         @OrmModel('users')
         class User extends Model {
 
-            @AttrField() id!: number;
+            @NumberField() id!: number;
 
-            @AttrField() name!: string;
+            @StringField() name!: string;
 
-            @AttrField() email!: string;
+            @StringField() email!: string;
 
         }
 
