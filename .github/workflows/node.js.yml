@@ -9,23 +9,14 @@ on:
 jobs:
     build:
 
-        name: Build and test for ${{ matrix.os }}
-        runs-on: ${{ matrix.os }}
-        env:
-            PLAYWRIGHT_BROWSERS_PATH: 0
-
-        strategy:
-            fail-fast: false
-            matrix:
-                node-version: [ 14.x ]
-                os: [ ubuntu-latest ]
+        name: Build and Publish
+        runs-on: ubuntu-latest
 
         steps:
         -   uses: actions/checkout@v2
-        -   name: Use Node.js ${{ matrix.node-version }}
-            uses: actions/setup-node@v1
+        -   uses: actions/setup-node@v1
             with:
-                node-version: ${{ matrix.node-version }}
+                node-version: 14
         -   name: Install Dependencies
             run: npm install
 
