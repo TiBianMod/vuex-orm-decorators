@@ -5,7 +5,6 @@ export {
     BelongsToField,
     BelongsToManyField,
     BooleanField,
-    DateField,
     Field,
     HasManyByField,
     HasManyField,

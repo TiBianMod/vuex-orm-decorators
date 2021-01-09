@@ -71,13 +71,6 @@ export function BooleanField(value?: boolean | null, mutator?: Mutator<boolean>)
 }
 
 /**
- * Adds the property as a `boolean` field
- */
-export function DateField(value?: Date | string | null, mutator?: Mutator<Date | null>) {
-    return Field(Model.attr(nullable(value, null), mutator as any));
-}
-
-/**
  * Adds the property as a `Has One` relationship field
  */
 export function HasOneField(related: typeof Model, foreignKey: string, localKey?: string) {
