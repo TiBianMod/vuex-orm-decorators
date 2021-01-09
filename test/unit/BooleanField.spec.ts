@@ -8,7 +8,7 @@ describe('BooleanField', () => {
         class User extends Model {
 
             @BooleanField() active!: boolean;
-        
+
         }
 
         expect(User.getFields().active).toBeInstanceOf(Boolean);
@@ -21,7 +21,7 @@ describe('BooleanField', () => {
         class User extends Model {
 
             @BooleanField(true) active!: boolean;
-        
+
         }
 
         expect(User.getFields().active).toBeInstanceOf(Boolean);
@@ -34,7 +34,7 @@ describe('BooleanField', () => {
         class User extends Model {
 
             @BooleanField(null) active!: boolean;
-        
+
         }
 
         expect(User.getFields().active).toBeInstanceOf(Boolean);
@@ -49,7 +49,7 @@ describe('BooleanField', () => {
             @BooleanField(false, (value: boolean) => {
                 return ! value;
             }) active!: boolean;
-        
+
         }
 
         expect(User.getFields().active).toBeInstanceOf(Boolean);

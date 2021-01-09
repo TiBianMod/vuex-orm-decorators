@@ -8,7 +8,7 @@ describe('UidField', () => {
         class User extends Model {
 
             @UidField() uid!: number;
-        
+
         }
 
         expect(User.getFields().uid).toBeInstanceOf(Uid);
@@ -21,7 +21,7 @@ describe('UidField', () => {
         class User extends Model {
 
             @UidField(() => 'uid') uid!: number;
-        
+
         }
 
         expect(User.getFields().uid).toBeInstanceOf(Uid);

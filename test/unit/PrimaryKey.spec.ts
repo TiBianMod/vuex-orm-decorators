@@ -8,7 +8,7 @@ describe('PrimaryKey', () => {
         class User extends Model {
 
             @NumberField() id!: number;
-        
+
         }
 
         expect(User.primaryKey).toBe('id');
@@ -20,7 +20,7 @@ describe('PrimaryKey', () => {
 
             @PrimaryKey()
             @UidField() uid!: number;
-        
+
         }
 
         expect(User.primaryKey).not.toBe('id');
@@ -35,7 +35,7 @@ describe('PrimaryKey', () => {
 
             @PrimaryKey()
             @NumberField() id!: number;
-        
+
         }
 
         new User();

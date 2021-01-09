@@ -8,7 +8,7 @@ describe('StringField', () => {
         class User extends Model {
 
             @StringField() name!: string;
-        
+
         }
 
         expect(User.getFields().name).toBeInstanceOf(String);
@@ -21,7 +21,7 @@ describe('StringField', () => {
         class User extends Model {
 
             @StringField('John Doe') name!: string;
-        
+
         }
 
         expect(User.getFields().name).toBeInstanceOf(String);
@@ -34,7 +34,7 @@ describe('StringField', () => {
         class User extends Model {
 
             @StringField(null) name!: string;
-        
+
         }
 
         expect(User.getFields().name).toBeInstanceOf(String);
@@ -49,7 +49,7 @@ describe('StringField', () => {
             @StringField('john doe', (value: string) => {
                 return value.toUpperCase();
             }) name!: string;
-        
+
         }
 
         expect(User.getFields().name).toBeInstanceOf(String);
