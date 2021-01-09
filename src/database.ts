@@ -1,6 +1,9 @@
-import { Database, install, Model } from '@vuex-orm/core';
+import { Database, install, Model, use } from '@vuex-orm/core';
 import { Options } from '@vuex-orm/core/lib/store/install';
 import { Plugin } from 'vuex';
+import DatePlugin from '@/plugins/Date';
+
+use(DatePlugin);
 
 export class ORMDatabase {
 

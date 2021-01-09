@@ -11,7 +11,7 @@ const defaultValues = {
 /**
  * Adds the property as a model field
  */
-export function Field(fieldType: Attribute) {
+function Field(fieldType: Attribute) {
     return (target: Object, propertyName: string | symbol): void => {
         const constructor = (target.constructor as any);
         const field = fieldType as Type;
@@ -77,6 +77,14 @@ export function StringField(value?: string | null, mutator?: Mutator<string>) {
  */
 export function NumberField(value?: number | null, mutator?: Mutator<number>) {
     return Field(Model.number(value, mutator as any));
+}
+
+/**
+ * Adds the property as a `date` field
+ */
+export function DateField(value?: Date | null, mutator?: Mutator<Date>) {
+    // @ts-expect-error use of Date plugin
+    return Field(Model.date(value, mutator as any));
 }
 
 /**
