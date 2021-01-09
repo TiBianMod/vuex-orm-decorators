@@ -1,5 +1,5 @@
 import { Model } from '@vuex-orm/core';
-import { ORMDatabase } from '@/database';
+import { ORMDatabase } from './database';
 
 export function OrmModel(entity: string, baseEntity?: string, types?: { [key: string]: typeof Model }) {
     return <Model extends Function>(constructor: Model): Model => {
