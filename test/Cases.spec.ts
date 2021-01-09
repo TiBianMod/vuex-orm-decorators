@@ -1,5 +1,5 @@
 import { AttrField, NumberField, StringField } from '@/attributes';
-import { Model } from '@vuex-orm/core';
+import { Model, String } from '@vuex-orm/core';
 import { ORMDatabase } from '@/database';
 import { OrmModel } from '@/model';
 import { Store } from 'vuex';
@@ -9,6 +9,12 @@ describe('Cases', () => {
 
     afterEach(() => {
         store.$db().entities = [];
+    });
+
+    beforeEach(() => {
+        store = new Store({
+            plugins: [ORMDatabase.install()],
+        });
     });
 
     it('merges the properties with the `fields` method', () => {
@@ -93,5 +99,19 @@ describe('Cases', () => {
             id: 10,
             name: 'John Doe',
         });
+    });
+
+    it('uses default value when using mutator and null as value', () => {
+        @OrmModel('something')
+        class Something extends Model {
+
+            @StringField(null, (value: string) => {
+                return value.toUpperCase();
+            }) name!: string;
+
+        }
+
+        expect((new Something()).name).toBe('');
+        expect((Something.getFields().name as String).isNullable).toBe(false);
     });
 });
