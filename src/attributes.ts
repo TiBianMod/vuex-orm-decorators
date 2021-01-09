@@ -4,7 +4,7 @@ import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
 /**
  * Adds the property as a model field
  */
-function Field(fieldType: Attribute) {
+export function Field(fieldType: Attribute) {
     return (target: Object, propertyName: string | symbol): void => {
         const constructor = (target.constructor as any);
 
@@ -20,14 +20,6 @@ function Field(fieldType: Attribute) {
             return { ...constructor._fields };
         };
     };
-}
-
-function nullable(value: any, defaultValue: any) {
-    if (value === null) {
-        return null;
-    }
-
-    return value === undefined ? defaultValue : value;
 }
 
 /**
@@ -160,4 +152,12 @@ export function MorphToManyField(related: typeof Model, pivot: typeof Model, rel
  */
 export function MorphedByManyField(related: typeof Model, pivot: typeof Model, relatedId: string, id: string, type: string, parentKey?: string, relatedKey?: string) {
     return Field(Model.morphedByMany(related, pivot, relatedId, id, type, parentKey, relatedKey));
+}
+
+function nullable(value: any, defaultValue: any) {
+    if (value === null) {
+        return null;
+    }
+
+    return value === undefined ? defaultValue : value;
 }
