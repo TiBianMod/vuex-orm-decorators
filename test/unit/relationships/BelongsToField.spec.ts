@@ -5,14 +5,8 @@ import { Store } from 'vuex';
 import { User } from 'test/unit/relationships/fixtures/User';
 
 describe('BelongsToField', () => {
-    let store: Store<any>;
-
-    afterEach(() => {
-        store.$db().entities = [];
-    });
-
     it('can define the property as a `Belongs To` relationship field', () => {
-        store = new Store({
+        new Store({
             plugins: [ORMDatabase.install()],
         });
 

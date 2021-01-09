@@ -5,12 +5,6 @@ import { OrmModel } from '@/model';
 import { Store } from 'vuex';
 
 describe('MorphOneField', () => {
-    let store: Store<any>;
-
-    afterEach(() => {
-        store.$db().entities = [];
-    });
-
     it('can define the property as a `Morph One` relationship field', () => {
         @OrmModel('images')
         class Image extends Model {
@@ -49,7 +43,7 @@ describe('MorphOneField', () => {
 
         }
 
-        store = new Store({
+        new Store({
             plugins: [ORMDatabase.install()],
         });
 

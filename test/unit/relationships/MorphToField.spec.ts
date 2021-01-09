@@ -5,12 +5,6 @@ import { OrmModel } from '@/model';
 import { Store } from 'vuex';
 
 describe('MorphToField', () => {
-    let store: Store<any>;
-
-    afterEach(() => {
-        store.$db().entities = [];
-    });
-
     it('can define the property as a `Morph To` relationship field', () => {
         @OrmModel('images')
         class Image extends Model {
@@ -40,7 +34,7 @@ describe('MorphToField', () => {
 
         }
 
-        store = new Store({
+        new Store({
             plugins: [ORMDatabase.install()],
         });
 

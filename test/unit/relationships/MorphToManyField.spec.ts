@@ -5,12 +5,6 @@ import { OrmModel } from '@/model';
 import { Store } from 'vuex';
 
 describe('MorphToManyField', () => {
-    let store: Store<any>;
-
-    afterEach(() => {
-        store.$db().entities = [];
-    });
-
     it('can define the property as a `Morph To Many` relationship field', () => {
         @OrmModel('tags')
         class Tag extends Model {
@@ -58,7 +52,7 @@ describe('MorphToManyField', () => {
 
         }
 
-        store = new Store({
+        new Store({
             plugins: [ORMDatabase.install()],
         });
 

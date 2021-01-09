@@ -5,12 +5,6 @@ import { OrmModel } from '@/model';
 import { Store } from 'vuex';
 
 describe('BelongsToManyField', () => {
-    let store: Store<any>;
-
-    afterEach(() => {
-        store.$db().entities = [];
-    });
-
     it('can define the property as a `Belongs To Many` relationship field', () => {
         @OrmModel('roles')
         class Role extends Model {
@@ -44,7 +38,7 @@ describe('BelongsToManyField', () => {
 
         }
 
-        store = new Store({
+        new Store({
             plugins: [ORMDatabase.install()],
         });
 

@@ -5,18 +5,6 @@ import { OrmModel } from '@/model';
 import { Store } from 'vuex';
 
 describe('Cases', () => {
-    let store: Store<any>;
-
-    afterEach(() => {
-        store.$db().entities = [];
-    });
-
-    beforeEach(() => {
-        store = new Store({
-            plugins: [ORMDatabase.install()],
-        });
-    });
-
     it('merges the properties with the `fields` method', () => {
         @OrmModel('users')
         class User extends Model {
@@ -53,7 +41,7 @@ describe('Cases', () => {
 
         }
 
-        store = new Store({
+        new Store({
             plugins: [ORMDatabase.install()],
         });
 

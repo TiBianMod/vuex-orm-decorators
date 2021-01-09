@@ -5,12 +5,6 @@ import { OrmModel } from '@/model';
 import { Store } from 'vuex';
 
 describe('HasManyThroughField', () => {
-    let store: Store<any>;
-
-    afterEach(() => {
-        store.$db().entities = [];
-    });
-
     it('can define the property as a `Has Many Through` relationship field', () => {
         @OrmModel('users')
         class User extends Model {
@@ -46,7 +40,7 @@ describe('HasManyThroughField', () => {
 
         }
 
-        store = new Store({
+        new Store({
             plugins: [ORMDatabase.install()],
         });
 
