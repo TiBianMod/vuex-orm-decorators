@@ -12,7 +12,7 @@ describe('UidField', () => {
         }
 
         expect(User.getFields().uid).toBeInstanceOf(Uid);
-        expect((new User()).uid).toBe('$uid1');
+        expect(new User().uid).toBe('$uid1');
         expect((User.getFields().uid as Uid).isNullable).toBe(false);
     });
 
@@ -25,7 +25,7 @@ describe('UidField', () => {
         }
 
         expect(User.getFields().uid).toBeInstanceOf(Uid);
-        expect((new User()).uid).toBe('uid');
+        expect(new User().uid).toBe('uid');
         expect((User.getFields().uid as Uid).isNullable).toBe(false);
     });
 });

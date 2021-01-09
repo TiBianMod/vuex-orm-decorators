@@ -12,7 +12,7 @@ describe('AttrField', () => {
         }
 
         expect(User.getFields().name).toBeInstanceOf(Attr);
-        expect((new User()).name).toBe('');
+        expect(new User().name).toBe('');
         expect((User.getFields().name as Attr).isNullable).toBe(false);
     });
 
@@ -25,7 +25,7 @@ describe('AttrField', () => {
         }
 
         expect(User.getFields().name).toBeInstanceOf(Attr);
-        expect((new User()).name).toBe('John');
+        expect(new User().name).toBe('John');
         expect((User.getFields().name as Attr).isNullable).toBe(false);
     });
 
@@ -38,7 +38,7 @@ describe('AttrField', () => {
         }
 
         expect(User.getFields().name).toBeInstanceOf(Attr);
-        expect((new User()).name).toBe(null);
+        expect(new User().name).toBe(null);
         expect((User.getFields().name as Attr).isNullable).toBe(true);
     });
 
@@ -53,7 +53,7 @@ describe('AttrField', () => {
         }
 
         expect(User.getFields().name).toBeInstanceOf(Attr);
-        expect((new User()).name).toBe('JOHN DOE');
+        expect(new User().name).toBe('JOHN DOE');
         expect((User.getFields().name as Attr).isNullable).toBe(false);
     });
 });

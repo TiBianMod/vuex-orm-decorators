@@ -111,7 +111,7 @@ describe('Cases', () => {
 
         }
 
-        expect((new Something()).name).toBe('');
+        expect(new Something().name).toBe('');
         expect((Something.getFields().name as String).isNullable).toBe(false);
     });
 });

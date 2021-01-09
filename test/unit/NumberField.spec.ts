@@ -12,7 +12,7 @@ describe('NumberField', () => {
         }
 
         expect(User.getFields().age).toBeInstanceOf(Number);
-        expect((new User()).age).toBe(0);
+        expect(new User().age).toBe(0);
         expect((User.getFields().age as Number).isNullable).toBe(false);
     });
 
@@ -25,7 +25,7 @@ describe('NumberField', () => {
         }
 
         expect(User.getFields().age).toBeInstanceOf(Number);
-        expect((new User()).age).toBe(25);
+        expect(new User().age).toBe(25);
         expect((User.getFields().age as Number).isNullable).toBe(false);
     });
 
@@ -38,7 +38,7 @@ describe('NumberField', () => {
         }
 
         expect(User.getFields().age).toBeInstanceOf(Number);
-        expect((new User()).age).toBe(null);
+        expect(new User().age).toBe(null);
         expect((User.getFields().age as Number).isNullable).toBe(true);
     });
 
@@ -53,7 +53,7 @@ describe('NumberField', () => {
         }
 
         expect(User.getFields().age).toBeInstanceOf(Number);
-        expect((new User()).age).toBe(26);
+        expect(new User().age).toBe(26);
         expect((User.getFields().age as Number).isNullable).toBe(false);
     });
 });

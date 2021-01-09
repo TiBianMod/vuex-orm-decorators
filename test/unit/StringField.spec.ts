@@ -12,7 +12,7 @@ describe('StringField', () => {
         }
 
         expect(User.getFields().name).toBeInstanceOf(String);
-        expect((new User()).name).toBe('');
+        expect(new User().name).toBe('');
         expect((User.getFields().name as String).isNullable).toBe(false);
     });
 
@@ -25,7 +25,7 @@ describe('StringField', () => {
         }
 
         expect(User.getFields().name).toBeInstanceOf(String);
-        expect((new User()).name).toBe('John Doe');
+        expect(new User().name).toBe('John Doe');
         expect((User.getFields().name as String).isNullable).toBe(false);
     });
 
@@ -38,7 +38,7 @@ describe('StringField', () => {
         }
 
         expect(User.getFields().name).toBeInstanceOf(String);
-        expect((new User()).name).toBe(null);
+        expect(new User().name).toBe(null);
         expect((User.getFields().name as String).isNullable).toBe(true);
     });
 
@@ -53,7 +53,7 @@ describe('StringField', () => {
         }
 
         expect(User.getFields().name).toBeInstanceOf(String);
-        expect((new User()).name).toBe('JOHN DOE');
+        expect(new User().name).toBe('JOHN DOE');
         expect((User.getFields().name as String).isNullable).toBe(false);
     });
 });
