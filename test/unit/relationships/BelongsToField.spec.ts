@@ -40,6 +40,7 @@ describe('BelongsToField', () => {
             $id: '10', id: 10, name: 'John Doe', profile: null,
         });
 
+        expect(profile?.user).toBeInstanceOf(User);
         expect(User.all()).toHaveLength(1);
         expect(Profile.all()).toHaveLength(1);
     });
