@@ -1,5 +1,5 @@
-import { AttrField, NumberField, StringField } from '@/attributes';
 import { Model, String } from '@vuex-orm/core';
+import { NumberField, StringField } from '@/attributes';
 import { ORMDatabase } from '@/database';
 import { OrmModel } from '@/model';
 import { Store } from 'vuex';
@@ -21,7 +21,7 @@ describe('Cases', () => {
         @OrmModel('users')
         class User extends Model {
 
-            @AttrField() id!: number;
+            @NumberField() id!: number;
 
             @StringField() name!: string;
 
@@ -37,7 +37,7 @@ describe('Cases', () => {
         @OrmModel('profiles')
         class Profile extends Model {
 
-            @AttrField() id!: number;
+            @NumberField() id!: number;
 
             @NumberField() user_id!: number;
 
