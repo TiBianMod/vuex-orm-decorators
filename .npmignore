@@ -1,7 +1,11 @@
+.github
 .idea
 .vscode
+.eslintignore
+.eslintrc.js
 coverage
 src
 test
+jest.config.js
 tsconfig.json
 .DS_Store
