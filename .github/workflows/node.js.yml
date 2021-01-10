@@ -3,12 +3,9 @@ name: Node.js CI
 on:
     push:
         branches: [ master, next ]
-    pull_request:
-        branches: [ master ]
 
 jobs:
     build:
-
         name: Build and Publish
         runs-on: ubuntu-latest
 
@@ -17,13 +14,15 @@ jobs:
         -   uses: actions/setup-node@v1
             with:
                 node-version: 14
+
         -   name: Install Dependencies
             run: npm install
 
-        -   name: Run Build
+        -   name: Build
             run: npm run build
 
-        -   uses: JS-DevTools/npm-publish@v1
+        -   name: Publish
+            uses: JS-DevTools/npm-publish@v1
             with:
                 token: ${{ secrets.NPM_AUTH_TOKEN }}
                 check-version: false
