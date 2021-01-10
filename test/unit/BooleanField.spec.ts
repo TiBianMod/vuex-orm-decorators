@@ -11,8 +11,8 @@ describe('BooleanField', () => {
 
         }
 
-        expect(User.getFields().active).toBeInstanceOf(Boolean);
         expect(new User().active).toBe(false);
+        expect(User.getFields().active).toBeInstanceOf(Boolean);
         expect((User.getFields().active as Boolean).isNullable).toBe(false);
     });
 
@@ -24,8 +24,8 @@ describe('BooleanField', () => {
 
         }
 
-        expect(User.getFields().active).toBeInstanceOf(Boolean);
         expect(new User().active).toBe(true);
+        expect(User.getFields().active).toBeInstanceOf(Boolean);
         expect((User.getFields().active as Boolean).isNullable).toBe(false);
     });
 
@@ -37,8 +37,8 @@ describe('BooleanField', () => {
 
         }
 
-        expect(User.getFields().active).toBeInstanceOf(Boolean);
         expect(new User().active).toBe(null);
+        expect(User.getFields().active).toBeInstanceOf(Boolean);
         expect((User.getFields().active as Boolean).isNullable).toBe(true);
     });
 
@@ -52,8 +52,8 @@ describe('BooleanField', () => {
 
         }
 
-        expect(User.getFields().active).toBeInstanceOf(Boolean);
         expect(new User().active).toBe(true);
+        expect(User.getFields().active).toBeInstanceOf(Boolean);
         expect((User.getFields().active as Boolean).isNullable).toBe(false);
     });
 });
