@@ -26,11 +26,19 @@ export default class DateType extends Type {
             this.value = Date.parse(value);
         }
 
-        if (value === undefined && typeof this.value !== 'number') {
-            return this.value || new Date();
+        if (typeof value === 'number') {
+            this.value = value;
+        }
+
+        if (this.isMilliseconds(value)) {
+            this.value = parseInt(value);
         }
 
         return new Date(this.value);
+    }
+
+    isMilliseconds(value: string): boolean {
+        return parseInt(value).toString().length > 12;
     }
 
 }
