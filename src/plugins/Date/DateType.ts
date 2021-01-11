@@ -34,6 +34,14 @@ export default class DateType extends Type {
             }
         }
 
+        if (value === undefined && ! this.value) {
+            return null;
+        }
+
+        if (value === null) {
+            return null;
+        }
+
         return new Date(this.value || value);
     }
 

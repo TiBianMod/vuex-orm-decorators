@@ -14,7 +14,7 @@ describe('DateField', () => {
 
         }
 
-        expect(new User().created_at).toBeInstanceOf(Date);
+        expect(new User().created_at).toBe(null);
         expect(User.getFields().created_at).toBeInstanceOf(DateType);
         expect((User.getFields().created_at as DateType).isNullable).toBe(false);
     });
@@ -52,10 +52,12 @@ describe('DateField', () => {
     });
 
     it('parses proper dates to date instance', () => {
-        @OrmModel('users')
+        @OrmModel('users-2')
         class User extends Model {
 
             @DateField() created_at!: Date;
+
+            @DateField() deleted_at?: Date;
 
         }
 
@@ -66,14 +68,21 @@ describe('DateField', () => {
         User.insert({
             data: [
                 { created_at: '2020-12-30T12:35:45.000000Z' },
-                { created_at: '2020-11-30T11:25:35.000000Z' },
+                {
+                    created_at: '2020-11-30T11:25:35.000000Z',
+                    deleted_at: '2020-12-02T11:25:35.000000Z',
+                },
                 { created_at: '2020-10-30T10:15:25.000Z' },
-                { created_at: '1601456715000' },
+                {
+                    created_at: '1601456715000',
+                    deleted_at: '1602666315000',
+                },
             ],
         });
 
         const user_1 = User.find('$uid1');
 
+        expect(user_1?.deleted_at).toBe(null);
         expect(user_1?.created_at).toBeInstanceOf(Date);
         expect(user_1?.created_at.toDateString()).toEqual('Wed Dec 30 2020');
         expect(user_1?.created_at.toUTCString()).toEqual('Wed, 30 Dec 2020 12:35:45 GMT');
@@ -84,8 +93,13 @@ describe('DateField', () => {
         expect(user_2?.created_at.toDateString()).toEqual('Mon Nov 30 2020');
         expect(user_2?.created_at.toUTCString()).toEqual('Mon, 30 Nov 2020 11:25:35 GMT');
 
+        expect(user_2?.deleted_at).toBeInstanceOf(Date);
+        expect(user_2?.deleted_at?.toDateString()).toEqual('Wed Dec 02 2020');
+        expect(user_2?.deleted_at?.toUTCString()).toEqual('Wed, 02 Dec 2020 11:25:35 GMT');
+
         const user_3 = User.find('$uid3');
 
+        expect(user_3?.deleted_at).toBe(null);
         expect(user_3?.created_at).toBeInstanceOf(Date);
         expect(user_3?.created_at.toDateString()).toEqual('Fri Oct 30 2020');
         expect(user_3?.created_at.toUTCString()).toEqual('Fri, 30 Oct 2020 10:15:25 GMT');
@@ -96,12 +110,16 @@ describe('DateField', () => {
         expect(user_4?.created_at.toDateString()).toEqual('Wed Sep 30 2020');
         expect(user_4?.created_at.toUTCString()).toEqual('Wed, 30 Sep 2020 09:05:15 GMT');
 
+        expect(user_4?.deleted_at).toBeInstanceOf(Date);
+        expect(user_4?.deleted_at?.toDateString()).toEqual('Wed Oct 14 2020');
+        expect(user_4?.deleted_at?.toUTCString()).toEqual('Wed, 14 Oct 2020 09:05:15 GMT');
+
         expect(User.getFields().created_at).toBeInstanceOf(DateType);
         expect((User.getFields().created_at as DateType).isNullable).toBe(false);
     });
 
     it('can mutate the given value', () => {
-        @OrmModel('users-1')
+        @OrmModel('users-3')
         class User extends Model {
 
             @DateField(null, (value: Date) => {
