@@ -8,12 +8,19 @@ const defaultValues = {
     Number: 0,
 };
 
+interface Target {
+    _fields: Record<symbol, Attribute>
+    fields: () => {
+        [key: string]: Attribute;
+    }
+}
+
 /**
  * Adds the property as a model field
  */
 function Field(fieldType: Attribute) {
     return (target: Object, propertyName: string | symbol): void => {
-        const constructor = (target.constructor as any);
+        const constructor = (target.constructor as unknown as Target);
         const field = fieldType as Type;
 
         constructor._fields = Object.assign(constructor.fields(), constructor._fields);
