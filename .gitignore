@@ -5,4 +5,5 @@ coverage
 dist
 .DS_Store
 yarn.lock
+eslint_report.json
 *.txt
