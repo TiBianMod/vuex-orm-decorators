@@ -17,28 +17,30 @@ export default class DateType extends Type {
         return this.mutate(this.validate(value), key);
     }
 
-    validate(value: any): Date | null {
+    validate(value: any): Date | number | null {
         if (this.isNullable && this.value === null) {
             return null;
         }
 
         if (typeof value === 'string') {
-            this.value = Date.parse(value);
+            if (this.inRange(value)) {
+                value = new Date(parseInt(value));
+            }
+
+            if (this.mutator) {
+                this.value = value;
+            } else {
+                return Date.parse(value);
+            }
         }
 
-        if (typeof value === 'number') {
-            this.value = value;
-        }
-
-        if (this.isMilliseconds(value)) {
-            this.value = parseInt(value);
-        }
-
-        return new Date(this.value);
+        return new Date(this.value || value);
     }
 
-    isMilliseconds(value: string): boolean {
-        return parseInt(value).toString().length > 12;
+    inRange(value: string): boolean {
+        const length = parseInt(value).toString().length;
+
+        return length < 15 && length > 12;
     }
 
 }
