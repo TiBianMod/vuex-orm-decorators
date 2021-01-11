@@ -22,9 +22,9 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/scotley/vuex-orm-decorators.git"
+        "url": "git+https://github.com/TiBianMod/vuex-orm-decorators.git"
     },
-    "author": "Scotley <scott@inspireweb.co.nz>",
+    "author": "TiBianMod <tibianmod@gmail.com>",
     "license": "MIT",
     "devDependencies": {
         "@types/jest": "^26.0",
