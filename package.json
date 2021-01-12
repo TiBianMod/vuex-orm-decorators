@@ -28,8 +28,8 @@
     "license": "MIT",
     "devDependencies": {
         "@types/jest": "^26.0",
-        "@typescript-eslint/eslint-plugin": "^4.12",
-        "@typescript-eslint/parser": "^4.12",
+        "@typescript-eslint/eslint-plugin": "^4.13",
+        "@typescript-eslint/parser": "^4.13",
         "@vuex-orm/core": "^0.36",
         "eslint": "^7.17",
         "eslint-import-resolver-typescript": "^2.3",
