@@ -18,7 +18,7 @@ export default class DateType extends Type {
     }
 
     validate(value: any): Date | number | null {
-        if (this.isNullable && this.value === null) {
+        if (this.isNullable && value === null) {
             return null;
         }
 
@@ -35,10 +35,6 @@ export default class DateType extends Type {
         }
 
         if (value === undefined && ! this.value) {
-            return null;
-        }
-
-        if (value === null) {
             return null;
         }
 

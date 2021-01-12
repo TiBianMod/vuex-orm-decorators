@@ -57,7 +57,7 @@ describe('DateField', () => {
 
             @DateField() created_at!: Date;
 
-            @DateField() deleted_at?: Date;
+            @DateField(null) deleted_at?: Date;
 
         }
 
@@ -116,6 +116,8 @@ describe('DateField', () => {
 
         expect(User.getFields().created_at).toBeInstanceOf(DateType);
         expect((User.getFields().created_at as DateType).isNullable).toBe(false);
+        expect(User.getFields().deleted_at).toBeInstanceOf(DateType);
+        expect((User.getFields().deleted_at as DateType).isNullable).toBe(true);
     });
 
     it('can mutate the given value', () => {
