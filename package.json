@@ -27,9 +27,9 @@
     "author": "TiBianMod <tibianmod@gmail.com>",
     "license": "MIT",
     "devDependencies": {
-        "@vuex-orm/core": "^0.36.3",
-        "typescript": "^4.0.3",
-        "vue": "^2.6.12",
-        "vuex": "^3.5.1"
+        "@vuex-orm/core": "^0.36",
+        "typescript": "^4.1",
+        "vue": "^2.6",
+        "vuex": "^3.6"
     }
 }
