@@ -120,8 +120,38 @@ describe('DateField', () => {
         expect((User.getFields().deleted_at as DateType).isNullable).toBe(true);
     });
 
-    it('can mutate the given value', () => {
+    it('returns null if property is empty', () => {
         @OrmModel('users-3')
+        class User extends Model {
+
+            @DateField() created_at!: Date;
+
+            @DateField() deleted_at?: Date;
+
+        }
+
+        new Store({
+            plugins: [ORMDatabase.install()],
+        });
+
+        User.insert({
+            data: [{ created_at: '2020-12-30T12:35:45.000000Z' }],
+        });
+
+        const user = User.query().first();
+
+        expect(user?.deleted_at).toBe(null);
+        expect(user?.created_at).toBeInstanceOf(Date);
+        expect(user?.created_at.toDateString()).toEqual('Wed Dec 30 2020');
+        expect(user?.created_at.toUTCString()).toEqual('Wed, 30 Dec 2020 12:35:45 GMT');
+        expect(User.getFields().created_at).toBeInstanceOf(DateType);
+        expect((User.getFields().deleted_at as DateType).isNullable).toBe(false);
+        expect(User.getFields().deleted_at).toBeInstanceOf(DateType);
+        expect((User.getFields().deleted_at as DateType).isNullable).toBe(false);
+    });
+
+    it('can mutate the given value', () => {
+        @OrmModel('users-4')
         class User extends Model {
 
             @DateField(null, (value: Date) => {

@@ -34,7 +34,7 @@ export default class DateType extends Type {
             }
         }
 
-        if (value === undefined && ! this.value) {
+        if ((value === undefined || value === null) && ! this.value) {
             return null;
         }
 
