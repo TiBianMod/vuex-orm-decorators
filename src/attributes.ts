@@ -1,5 +1,5 @@
 import { Attribute, Model, Type } from '@vuex-orm/core';
-import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
+import Mutator from '@vuex-orm/core/dist/src/attributes/contracts/Mutator';
 
 const defaultValues = {
     Attr: '',

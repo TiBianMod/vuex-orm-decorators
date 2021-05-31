@@ -1,8 +1,6 @@
 import { BooleanField, NumberField, StringField } from '@/attributes';
 import { Model } from '@vuex-orm/core';
-import { ORMDatabase } from '@/database';
 import { OrmModel } from '@/model';
-import { Store } from 'vuex';
 
 describe('OrmModel', () => {
     it('can define the name that is going be used as module name in Vuex Store', () => {
@@ -110,25 +108,5 @@ describe('OrmModel', () => {
 
         expect(Object.keys(SuperAdmin.fields())).toHaveLength(6);
         expect(Object.keys(SuperAdmin.fields())).toEqual(['id', 'name', 'email', 'level', 'active', 'fullAccess']);
-    });
-
-    it('throws a warning message when using STI without mapping the types', () => {
-        spyOn(console, 'warn');
-
-        @OrmModel('users')
-        class User extends Model {
-        }
-
-        @OrmModel('admins', 'users')
-        class Admin extends User {
-        }
-
-        new Admin();
-
-        new Store({
-            plugins: [ORMDatabase.install()],
-        });
-
-        expect(console.warn).toHaveBeenLastCalledWith('[Vuex ORM] Model `Admin` extends `User` which doesn\'t overwrite Model.types(). You will not be able to use type mapping.');
     });
 });

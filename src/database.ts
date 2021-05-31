@@ -1,5 +1,5 @@
 import { Database, install, Model, use } from '@vuex-orm/core';
-import { Options } from '@vuex-orm/core/lib/store/install';
+import { Options } from '@vuex-orm/core/dist/src/store/install';
 import { Plugin } from 'vuex';
 import DatePlugin from './plugins/Date';
 

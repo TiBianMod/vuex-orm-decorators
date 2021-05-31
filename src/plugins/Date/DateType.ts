@@ -1,7 +1,7 @@
 import { Type } from '@vuex-orm/core';
-import Model from '@vuex-orm/core/lib/model/Model';
-import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
-import Record from '@vuex-orm/core/lib/data/Record';
+import Model from '@vuex-orm/core/dist/src/model/Model';
+import Mutator from '@vuex-orm/core/dist/src/attributes/contracts/Mutator';
+import Record from '@vuex-orm/core/dist/src/data/Record';
 
 export default class DateType extends Type {
 
