@@ -1,6 +1,6 @@
 import VuexORM, { Model } from '@vuex-orm/core';
 import { Plugin } from 'vuex';
-import { Options } from '@vuex-orm/core/dist/src/store/install';
+import { Options } from '@vuex-orm/core/lib/store/install';
 
 export class ORMDatabase {
 
