@@ -1,6 +1,6 @@
 # vuex-orm-decorators
 
-Decorator Syntax for Vuex ORM for better type safety and a better experience.
+Decorator Syntax for Vuex ORM `<= v0.36.3` for better type safety and a better experience.
 
 ![NPM](https://img.shields.io/npm/l/vuex-orm-decorators.svg) ![npm bundle size](https://img.shields.io/bundlephobia/min/vuex-orm-decorators.svg) ![GitHub issues](https://img.shields.io/github/issues/TiBianMod/vuex-orm-decorators.svg) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/TiBianMod/vuex-orm-decorators.svg) ![](https://img.shields.io/badge/types-Typescript-blue.svg)
 
