@@ -5,9 +5,21 @@ import Mutator from '@vuex-orm/core/lib/attributes/contracts/Mutator';
  * Sets the property as the primary key of the model
  */
 export function PrimaryKey() {
-    return (target: Object, propertyName: string | symbol): void => {
-        (target.constructor as any).primaryKey = propertyName;
-    };
+    return (target: any, propertyName: string | symbol) => {
+        if (typeof target.constructor.primaryKey === 'string') {
+            if (target.constructor.primaryKey === propertyName) {
+                return
+            } else {
+                target.constructor.primaryKey = [target.constructor.primaryKey, propertyName]
+            }
+            return
+        }
+        if (target.constructor.primaryKey === 'object' && target.constructor.primaryKey instanceof Array) {
+            target.constructor.primaryKey.push(propertyName)
+            return
+        }
+        target.constructor.primaryKey = propertyName
+    }
 }
 
 /**
