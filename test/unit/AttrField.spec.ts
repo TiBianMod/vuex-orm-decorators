@@ -1,5 +1,6 @@
 import { Attr, Model } from "@vuex-orm/core";
 import { AttrField } from "@/attributes";
+import { describe, expect, it } from "vitest";
 import { OrmModel } from "@/model";
 
 describe("AttrField", () => {

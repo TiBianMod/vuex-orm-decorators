@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { Model, Number } from "@vuex-orm/core";
 import { NumberField } from "@/attributes";
 import { OrmModel } from "@/model";

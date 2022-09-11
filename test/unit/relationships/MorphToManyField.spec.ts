@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { Model, MorphToMany } from "@vuex-orm/core";
 import { MorphToManyField, NumberField, StringField } from "@/attributes";
 import { ORMDatabase } from "@/database";

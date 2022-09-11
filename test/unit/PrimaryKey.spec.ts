@@ -1,3 +1,4 @@
+import { describe, expect, it, test, vi } from "vitest";
 import { Model } from "@vuex-orm/core";
 import { NumberField, PrimaryKey, StringField, UidField } from "@/attributes";
 import { OrmModel } from "@/model";
@@ -25,7 +26,7 @@ describe("PrimaryKey", () => {
     });
 
     it("throws a warning message when using `PrimaryKey` decorator on `id` property", () => {
-        spyOn(console, "warn");
+        vi.spyOn(console, "warn");
 
         @OrmModel("users")
         class User extends Model {

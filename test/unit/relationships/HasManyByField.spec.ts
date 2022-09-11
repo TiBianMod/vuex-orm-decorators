@@ -1,4 +1,5 @@
 import { AttrField, HasManyByField, NumberField, StringField } from "@/attributes";
+import { describe, expect, it } from "vitest";
 import { HasManyBy, Model } from "@vuex-orm/core";
 import { ORMDatabase } from "@/database";
 import { OrmModel } from "@/model";

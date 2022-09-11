@@ -9,8 +9,9 @@
         "build": "pnpm lint && pnpm test && tsc --rootDir src && rm -rf dist/types/plugins",
         "lint": "eslint . --ext .ts",
         "lint:report": "pnpm lint --output-file eslint_report.json --format json",
-        "test": "jest",
-        "test:coverage": "jest --collect-coverage"
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "test:coverage": "vitest run --coverage"
     },
     "keywords": [
         "vue",
@@ -27,20 +28,19 @@
     "author": "TiBianMod <tibianmod@gmail.com>",
     "license": "MIT",
     "devDependencies": {
-        "@types/jest": "^26.0.24",
         "@typescript-eslint/eslint-plugin": "^5.36.2",
         "@typescript-eslint/parser": "^5.36.2",
+        "@vitest/coverage-c8": "^0.23.2",
         "@vuex-orm/core": "^0.36.4",
         "eslint": "8.22.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.2.1",
         "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
         "eslint-plugin-unused-imports": "^2.0.0",
-        "jest": "^26.6.3",
         "prettier": "^2.7.1",
-        "ts-jest": "^26.5.6",
         "tslib": "^2.4.0",
         "typescript": "^4.8.3",
+        "vitest": "^0.23.2",
         "vue": "^3.2.39",
         "vuex": "^4.0.2"
     }

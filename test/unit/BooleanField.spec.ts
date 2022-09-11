@@ -1,5 +1,6 @@
 import { Boolean, Model } from "@vuex-orm/core";
 import { BooleanField } from "@/attributes";
+import { describe, expect, it } from "vitest";
 import { OrmModel } from "@/model";
 
 describe("BooleanField", () => {

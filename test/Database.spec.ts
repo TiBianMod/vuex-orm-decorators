@@ -1,3 +1,4 @@
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { Model } from "@vuex-orm/core";
 import { ORMDatabase } from "@/database";
 import { OrmModel } from "@/model";
@@ -11,7 +12,7 @@ describe("ORMDatabase", () => {
     });
 
     it("can auto register a model to Database", () => {
-        spyOn(console, "warn");
+        const spy = vi.spyOn(console, "warn");
 
         @OrmModel("users")
         class User extends Model {}
@@ -35,6 +36,8 @@ describe("ORMDatabase", () => {
 
         expect(store.$db().entities[1].name).toBe("admins");
         expect(store.$db().entities[1].base).toBe("users");
+
+        expect(spy).toHaveBeenCalled();
     });
 
     it("can pass options during the installation", () => {
@@ -52,7 +55,7 @@ describe("ORMDatabase", () => {
     });
 
     it("throws a error message when the model is already registered", () => {
-        spyOn(console, "error");
+        const spy = vi.spyOn(console, "error");
 
         @OrmModel("users")
         class User extends Model {}
@@ -68,5 +71,7 @@ describe("ORMDatabase", () => {
         expect(console.error).toHaveBeenLastCalledWith(
             "[Vuex ORM Decorators] Unable to register Model 'User'. Model 'User' is already registered."
         );
+
+        expect(spy).toHaveBeenCalled();
     });
 });

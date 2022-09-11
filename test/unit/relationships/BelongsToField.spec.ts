@@ -1,4 +1,5 @@
 import { BelongsTo } from "@vuex-orm/core";
+import { describe, expect, it } from "vitest";
 import { ORMDatabase } from "@/database";
 import { Profile } from "test/unit/relationships/fixtures/Profile";
 import { Store } from "vuex";

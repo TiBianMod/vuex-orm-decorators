@@ -1,5 +1,6 @@
 import { BelongsToMany, Model } from "@vuex-orm/core";
 import { BelongsToManyField, NumberField, StringField } from "@/attributes";
+import { describe, expect, it } from "vitest";
 import { ORMDatabase } from "@/database";
 import { OrmModel } from "@/model";
 import { Store } from "vuex";

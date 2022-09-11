@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import { Model, Uid } from "@vuex-orm/core";
 import { OrmModel } from "@/model";
 import { UidField } from "@/attributes";

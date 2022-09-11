@@ -9,17 +9,8 @@ module.exports = {
         node: true,
     },
     // https://github.com/airbnb/javascript
-    extends: [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "prettier",
-    ],
-    plugins: [
-        "@typescript-eslint",
-        "unused-imports",
-        "sort-imports-es6-autofix",
-        "prettier",
-    ],
+    extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+    plugins: ["@typescript-eslint", "unused-imports", "sort-imports-es6-autofix", "prettier"],
     settings: {
         "import/resolver": {
             typescript: {
@@ -93,12 +84,4 @@ module.exports = {
         "unused-imports/no-unused-imports-ts": "error",
     },
     ignorePatterns: ["dist"],
-    overrides: [
-        {
-            files: ["__tests__/*.{j,t}s?(x)", "tests/unit/**/*.spec.{j,t}s?(x)"],
-            env: {
-                jest: true,
-            },
-        },
-    ],
 };
