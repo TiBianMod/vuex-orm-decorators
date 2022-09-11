@@ -51,12 +51,6 @@ function Field(fieldType: Attribute) {
  */
 export function PrimaryKey() {
     return (target: any, propertyName: string | symbol): void => {
-        if (propertyName === "id") {
-            console.warn(
-                "[Vuex ORM Decorators] No need using `PrimaryKey` decorator on property `id`. Property `id` is by default the `primaryKey`."
-            );
-        }
-
         const symbol = Symbol.for("vuex-orm-decorator:primary-key");
 
         if (typeof target[symbol] === "object" && target[symbol] instanceof Array) {

@@ -1,4 +1,4 @@
-import { describe, expect, it, test, vi } from "vitest";
+import { describe, expect, it, test } from "vitest";
 import { Model } from "@vuex-orm/core";
 import { NumberField, PrimaryKey, StringField, UidField } from "@/attributes";
 import { OrmModel } from "@/model";
@@ -23,23 +23,6 @@ describe("PrimaryKey", () => {
 
         expect(User.primaryKey).not.toBe("id");
         expect(User.primaryKey).toBe("uid");
-    });
-
-    it("throws a warning message when using `PrimaryKey` decorator on `id` property", () => {
-        vi.spyOn(console, "warn");
-
-        @OrmModel("users")
-        class User extends Model {
-            @PrimaryKey()
-            @NumberField()
-            id!: number;
-        }
-
-        new User();
-
-        expect(console.warn).toHaveBeenLastCalledWith(
-            "[Vuex ORM Decorators] No need using `PrimaryKey` decorator on property `id`. Property `id` is by default the `primaryKey`."
-        );
     });
 
     it("supports composite key", () => {
