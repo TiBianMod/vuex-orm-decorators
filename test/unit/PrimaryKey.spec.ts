@@ -49,9 +49,13 @@ describe("PrimaryKey", () => {
 
             @PrimaryKey()
             @StringField()
+            public userId!: string;
+
+            @PrimaryKey()
+            @StringField()
             public voteId!: string;
         }
 
-        expect(User.primaryKey).toEqual(["id", "voteId"]);
+        expect(User.primaryKey).toEqual(["id", "userId", "voteId"]);
     });
 });
