@@ -1,0 +1,10 @@
+.github
+.idea
+.vscode
+.eslintignore
+.eslintrc.js
+coverage
+src
+test
+tsconfig.json
+.DS_Store

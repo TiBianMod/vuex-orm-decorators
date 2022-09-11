@@ -1,0 +1,42 @@
+name: Node.js CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Testing
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7.11.0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "pnpm"
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Run Tests
+        run: pnpm test
+
+      - name: Save Code Linting Report
+        run: pnpm lint:report
+        continue-on-error: true
+
+      - name: Annotate Code Linting Results
+        uses: ataylorme/eslint-annotate-action@1.1.2
+        with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
+          report-json: "eslint_report.json"
+
+      - name: Upload ESLint report
+        uses: actions/upload-artifact@v1
+        with:
+          name: eslint_report.json
+          path: eslint_report.json

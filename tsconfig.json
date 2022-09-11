@@ -1,29 +1,38 @@
 {
     "compilerOptions": {
-        "module": "ESNext",
-        "target": "ES2015",
-        "moduleResolution": "Node",
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": ".",
+        "declaration": true,
+        "declarationDir": "dist/types",
+        "esModuleInterop": true,
         "experimentalDecorators": true,
+        "importHelpers": true,
+        "module": "ESNext",
+        "moduleResolution": "Node",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "outDir": "dist",
+        "removeComments": false,
+        "rootDir": ".",
+        "sourceMap": true,
+        "sourceRoot": "src",
+        "strict": true,
+        "strictNullChecks": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "target": "ES2015",
+        "importsNotUsedAsValues": "error",
         "lib": [
             "DOM",
             "ESNext"
         ],
-        "importHelpers": true,
-        "sourceMap": true,
-        "declaration": true,
-        "declarationDir": "dist/types",
-        "rootDir": "src",
-        "outDir": "dist",
-        "sourceRoot": "src",
-        "strict": true,
-        "removeComments": false,
-        "strictNullChecks": true
+        "paths": {
+            "@/*": ["src/*"],
+            "test/*": ["test/*"]
+        }
     },
-    "include": [
-        "src"
-    ],
-    "exclude": [
-        "node_modules",
-        "test"
-    ]
+    "include": ["src", "test"],
+    "exclude": ["node_modules", "test"],
 }

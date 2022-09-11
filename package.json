@@ -1,12 +1,17 @@
 {
     "name": "vuex-orm-decorators",
-    "version": "1.2.8",
+    "version": "2.0.0-rc.3",
     "description": "Simple Typescript decorators to improve the vuex-orm experience in Typescript by introducing typed property access.",
     "main": "dist/index.js",
     "types": "dist/types/index.d.ts",
     "typings": "dist/types/index.d.ts",
     "scripts": {
-        "build": "tsc --rootDir src"
+        "build": "pnpm lint && pnpm test && tsc --rootDir src && rm -rf dist/types/plugins",
+        "lint": "eslint . --ext .ts",
+        "lint:report": "pnpm lint --output-file eslint_report.json --format json",
+        "test": "vitest run",
+        "test:watch": "vitest watch",
+        "test:coverage": "vitest run --coverage"
     },
     "keywords": [
         "vue",
@@ -18,14 +23,25 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/TiBianMod/vuex-orm-decorators.git"
+        "url": "git@github.com:TiBianMod/vuex-orm-decorators.git"
     },
     "author": "TiBianMod <tibianmod@gmail.com>",
     "license": "MIT",
     "devDependencies": {
-        "@vuex-orm/core": "0.36.0||<0.36.4",
-        "typescript": "^4.1",
-        "vue": "^2.6",
-        "vuex": "^3.6"
+        "@typescript-eslint/eslint-plugin": "^5.36.2",
+        "@typescript-eslint/parser": "^5.36.2",
+        "@vitest/coverage-c8": "^0.23.2",
+        "@vuex-orm/core": "^0.36.4",
+        "eslint": "8.22.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
+        "eslint-plugin-unused-imports": "^2.0.0",
+        "prettier": "^2.7.1",
+        "tslib": "^2.4.0",
+        "typescript": "^4.8.3",
+        "vitest": "^0.23.2",
+        "vue": "^3.2.39",
+        "vuex": "^4.0.2"
     }
 }
