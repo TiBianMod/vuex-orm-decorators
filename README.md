@@ -2,7 +2,18 @@
 
 Decorator Syntax for Vuex ORM `v0.36` for better type safety and a better experience.
 
-![NPM](https://img.shields.io/npm/l/vuex-orm-decorators.svg) ![npm bundle size](https://img.shields.io/bundlephobia/min/vuex-orm-decorators.svg) ![GitHub issues](https://img.shields.io/github/issues/TiBianMod/vuex-orm-decorators.svg) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/TiBianMod/vuex-orm-decorators.svg) ![](https://img.shields.io/badge/types-Typescript-blue.svg)
+![NPM](https://img.shields.io/npm/l/vuex-orm-decorators.svg) ![GitHub issues](https://img.shields.io/github/issues/TiBianMod/vuex-orm-decorators.svg) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/TiBianMod/vuex-orm-decorators.svg) ![](https://img.shields.io/badge/types-Typescript-blue.svg)
+
+---
+
+:fire: **Quick note before start using this package**
+* [Pinia](https://github.com/vuejs/pinia) is the new official state management library for [Vue](https://github.com/vuejs/core)
+* [Vuex](https://github.com/vuejs/vuex) and [Vuex ORM](https://github.com/vuex-orm/vuex-orm) considered deprecated!!!
+* If you need to use Vuex ORM, please make use of [Vuex ORM Next](https://github.com/vuex-orm/vuex-orm-next)
+  * This is the next iteration of Vuex ORM
+  * New documentation is ongoing and can be found at https://next.vuex-orm.org
+
+---
 
 Typescript Decorators to simplify Vuex ORM integration in typescript projects. If you are using
 the [vue-module-decorators](https://github.com/championswimmer/vuex-module-decorators)
