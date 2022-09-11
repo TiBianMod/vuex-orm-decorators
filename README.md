@@ -36,6 +36,13 @@ npm install @vuex-orm/core@^0.36
 npm install vuex-orm-decorators -D
 ```
 
+### pnpm
+
+```console
+pnpm add @vuex-orm/core@^0.36
+pnpm add vuex-orm-decorators -D
+```
+
 ### Yarn
 
 ```console
