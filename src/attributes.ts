@@ -1,18 +1,19 @@
-import { Attribute, Model, Type } from '@vuex-orm/core';
-import Mutator from '@vuex-orm/core/dist/src/attributes/contracts/Mutator';
+import { Model } from "@vuex-orm/core";
+import type { Attribute, Type } from "@vuex-orm/core";
+import type Mutator from "@vuex-orm/core/dist/src/attributes/contracts/Mutator";
 
 const defaultValues = {
-    Attr: '',
+    Attr: "",
     Boolean: false,
-    String: '',
+    String: "",
     Number: 0,
 };
 
 interface Target {
-    _fields: Record<symbol, Attribute>
+    _fields: Record<symbol, Attribute>;
     fields: () => {
         [key: string]: Attribute;
-    }
+    };
 }
 
 /**
@@ -20,7 +21,7 @@ interface Target {
  */
 function Field(fieldType: Attribute) {
     return (target: Object, propertyName: string | symbol): void => {
-        const constructor = (target.constructor as unknown as Target);
+        const constructor = target.constructor as unknown as Target;
         const field = fieldType as Type;
 
         constructor._fields = Object.assign(constructor.fields(), constructor._fields);
@@ -33,7 +34,7 @@ function Field(fieldType: Attribute) {
             field.value = defaultValues[field.constructor.name];
         }
 
-        if (! field.mutator && field.value === null) {
+        if (!field.mutator && field.value === null) {
             field.isNullable = true;
         }
 
@@ -50,25 +51,29 @@ function Field(fieldType: Attribute) {
  */
 export function PrimaryKey() {
     return (target: any, propertyName: string | symbol): void => {
-        if (propertyName === 'id') {
-            console.warn('[Vuex ORM Decorators] No need using `PrimaryKey` decorator on property `id`. Property `id` is by default the `primaryKey`.');
+        if (propertyName === "id") {
+            console.warn(
+                "[Vuex ORM Decorators] No need using `PrimaryKey` decorator on property `id`. Property `id` is by default the `primaryKey`."
+            );
         }
 
         const symbol = Symbol.for("vuex-orm-decorator:primary-key");
 
-        if (typeof target[symbol] === 'object' && target[symbol] instanceof Array) {
-            target[symbol].push(propertyName)
-        }
-        if (typeof target[symbol] === 'string') {
-            if (target[symbol] !== propertyName) {
-                target[symbol] = [target[symbol], propertyName]
-            }
-        }
-        if (typeof target[symbol] === 'undefined') {
-            target[symbol] = propertyName
+        if (typeof target[symbol] === "object" && target[symbol] instanceof Array) {
+            target[symbol].push(propertyName);
         }
 
-        target.constructor.primaryKey = target[symbol]
+        if (typeof target[symbol] === "string") {
+            if (target[symbol] !== propertyName) {
+                target[symbol] = [target[symbol], propertyName];
+            }
+        }
+
+        if (typeof target[symbol] === "undefined") {
+            target[symbol] = propertyName;
+        }
+
+        target.constructor.primaryKey = target[symbol];
     };
 }
 
@@ -146,14 +151,28 @@ export function HasManyByField(parent: typeof Model, foreignKey: string, ownerKe
 /**
  * Adds the property as a `Has Many Through` relationship field
  */
-export function HasManyThroughField(related: typeof Model, through: typeof Model, firstKey: string, secondKey: string, localKey?: string, secondLocalKey?: string) {
+export function HasManyThroughField(
+    related: typeof Model,
+    through: typeof Model,
+    firstKey: string,
+    secondKey: string,
+    localKey?: string,
+    secondLocalKey?: string
+) {
     return Field(Model.hasManyThrough(related, through, firstKey, secondKey, localKey, secondLocalKey));
 }
 
 /**
  * Adds the property as a `Belongs To Many` relationship field
  */
-export function BelongsToManyField(related: typeof Model, pivot: typeof Model, foreignPivotKey: string, relatedPivotKey: string, parentKey?: string, relatedKey?: string) {
+export function BelongsToManyField(
+    related: typeof Model,
+    pivot: typeof Model,
+    foreignPivotKey: string,
+    relatedPivotKey: string,
+    parentKey?: string,
+    relatedKey?: string
+) {
     return Field(Model.belongsToMany(related, pivot, foreignPivotKey, relatedPivotKey, parentKey, relatedKey));
 }
 
@@ -181,13 +200,29 @@ export function MorphManyField(related: typeof Model, id: string, type: string, 
 /**
  * Adds the property as a `Morph To Many` relationship field
  */
-export function MorphToManyField(related: typeof Model, pivot: typeof Model, relatedId: string, id: string, type: string, parentKey?: string, relatedKey?: string) {
+export function MorphToManyField(
+    related: typeof Model,
+    pivot: typeof Model,
+    relatedId: string,
+    id: string,
+    type: string,
+    parentKey?: string,
+    relatedKey?: string
+) {
     return Field(Model.morphToMany(related, pivot, relatedId, id, type, parentKey, relatedKey));
 }
 
 /**
  * Adds the property as a `Morphed By Many` relationship field
  */
-export function MorphedByManyField(related: typeof Model, pivot: typeof Model, relatedId: string, id: string, type: string, parentKey?: string, relatedKey?: string) {
+export function MorphedByManyField(
+    related: typeof Model,
+    pivot: typeof Model,
+    relatedId: string,
+    id: string,
+    type: string,
+    parentKey?: string,
+    relatedKey?: string
+) {
     return Field(Model.morphedByMany(related, pivot, relatedId, id, type, parentKey, relatedKey));
 }

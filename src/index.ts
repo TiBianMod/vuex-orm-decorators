@@ -1,5 +1,7 @@
-export { OrmModel } from './model';
-export { ORMDatabase } from './database';
+export { OrmModel } from "./model";
+
+export { ORMDatabase } from "./database";
+
 export {
     AttrField,
     BelongsToField,
@@ -19,4 +21,4 @@ export {
     PrimaryKey,
     StringField,
     UidField,
-} from './attributes';
+} from "./attributes";

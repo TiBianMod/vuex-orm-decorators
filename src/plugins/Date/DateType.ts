@@ -1,14 +1,13 @@
-import { Type } from '@vuex-orm/core';
-import Model from '@vuex-orm/core/dist/src/model/Model';
-import Mutator from '@vuex-orm/core/dist/src/attributes/contracts/Mutator';
-import Record from '@vuex-orm/core/dist/src/data/Record';
+import { Type } from "@vuex-orm/core";
+import type Model from "@vuex-orm/core/dist/src/model/Model";
+import type Mutator from "@vuex-orm/core/dist/src/attributes/contracts/Mutator";
+import type Record from "@vuex-orm/core/dist/src/data/Record";
 
 export default class DateType extends Type {
-
     constructor(model: typeof Model, value: Date | null, mutator?: Mutator<Date>) {
         super(model, value, mutator);
 
-        if (! mutator && value === null) {
+        if (!mutator && value === null) {
             this.nullable();
         }
     }
@@ -22,7 +21,7 @@ export default class DateType extends Type {
             return null;
         }
 
-        if (typeof value === 'string') {
+        if (typeof value === "string") {
             if (this.inRange(value)) {
                 value = new Date(parseInt(value));
             }
@@ -34,7 +33,7 @@ export default class DateType extends Type {
             }
         }
 
-        if ((value === undefined || value === null) && ! this.value) {
+        if ((value === undefined || value === null) && !this.value) {
             return null;
         }
 
@@ -46,5 +45,4 @@ export default class DateType extends Type {
 
         return length < 15 && length > 12;
     }
-
 }

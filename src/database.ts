@@ -1,12 +1,12 @@
-import { Database, install, Model, use } from '@vuex-orm/core';
-import { Options } from '@vuex-orm/core/dist/src/store/install';
-import { Plugin } from 'vuex';
-import DatePlugin from './plugins/Date';
+import { Database, install, use } from "@vuex-orm/core";
+import DatePlugin from "./plugins/Date";
+import type { Model } from "@vuex-orm/core";
+import type { Options } from "@vuex-orm/core/dist/src/store/install";
+import type { Plugin } from "vuex";
 
 use(DatePlugin);
 
 export class ORMDatabase {
-
     private static _ormDatabase = new Database();
 
     private static _models: typeof Model[] = [];
@@ -23,7 +23,9 @@ export class ORMDatabase {
 
     public static registerEntity(model: typeof Model) {
         if (this._models.includes(model)) {
-            return console.error(`[Vuex ORM Decorators] Unable to register Model '${model.name}'. Model '${model.name}' is already registered.`);
+            return console.error(
+                `[Vuex ORM Decorators] Unable to register Model '${model.name}'. Model '${model.name}' is already registered.`
+            );
         }
 
         this._models.push(model);
@@ -32,5 +34,4 @@ export class ORMDatabase {
     public static models() {
         return this._models;
     }
-
 }

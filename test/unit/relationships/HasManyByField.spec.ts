@@ -1,29 +1,25 @@
-import { AttrField, HasManyByField, NumberField, StringField } from '@/attributes';
-import { HasManyBy, Model } from '@vuex-orm/core';
-import { ORMDatabase } from '@/database';
-import { OrmModel } from '@/model';
-import { Store } from 'vuex';
+import { AttrField, HasManyByField, NumberField, StringField } from "@/attributes";
+import { HasManyBy, Model } from "@vuex-orm/core";
+import { ORMDatabase } from "@/database";
+import { OrmModel } from "@/model";
+import { Store } from "vuex";
 
-describe('HasManyByField', () => {
-    it('can define the property as a `Has Many By` relationship field', () => {
-        @OrmModel('nodes')
+describe("HasManyByField", () => {
+    it("can define the property as a `Has Many By` relationship field", () => {
+        @OrmModel("nodes")
         class Node extends Model {
-
             @NumberField() id!: number;
 
             @StringField() name!: string;
-
         }
 
-        @OrmModel('clusters')
+        @OrmModel("clusters")
         class Cluster extends Model {
-
             @NumberField() id!: number;
 
             @AttrField() node_ids!: number[];
 
-            @HasManyByField(Node, 'node_ids') nodes!: Node;
-
+            @HasManyByField(Node, "node_ids") nodes!: Node;
         }
 
         new Store({
@@ -34,9 +30,9 @@ describe('HasManyByField', () => {
             data: {
                 id: 1,
                 nodes: [
-                    { id: 1, name: 'Node 1' },
-                    { id: 2, name: 'Node 2' },
-                    { id: 3, name: 'Node 3' },
+                    { id: 1, name: "Node 1" },
+                    { id: 2, name: "Node 2" },
+                    { id: 3, name: "Node 3" },
                 ],
             },
         });
@@ -46,15 +42,15 @@ describe('HasManyByField', () => {
         expect(field).toBeInstanceOf(HasManyBy);
 
         expect(field.parent).toBe(Node);
-        expect(field.foreignKey).toBe('node_ids');
-        expect(field.ownerKey).toBe('id');
+        expect(field.foreignKey).toBe("node_ids");
+        expect(field.ownerKey).toBe("id");
 
-        const cluster = Cluster.query().with('nodes').first();
+        const cluster = Cluster.query().with("nodes").first();
 
         expect(cluster?.nodes).toEqual([
-            { $id: '1', id: 1, name: 'Node 1' },
-            { $id: '2', id: 2, name: 'Node 2' },
-            { $id: '3', id: 3, name: 'Node 3' },
+            { $id: "1", id: 1, name: "Node 1" },
+            { $id: "2", id: 2, name: "Node 2" },
+            { $id: "3", id: 3, name: "Node 3" },
         ]);
 
         expect(cluster?.nodes[0]).toBeInstanceOf(Node);
