@@ -6,9 +6,9 @@
     "types": "dist/types/index.d.ts",
     "typings": "dist/types/index.d.ts",
     "scripts": {
-        "build": "yarn lint && yarn test && tsc --rootDir src && rm -rf dist/types/plugins",
+        "build": "pnpm lint && pnpm test && tsc --rootDir src && rm -rf dist/types/plugins",
         "lint": "eslint . --ext .ts",
-        "lint:report": "yarn lint --output-file eslint_report.json --format json",
+        "lint:report": "pnpm lint --output-file eslint_report.json --format json",
         "test": "jest",
         "test:coverage": "jest --collect-coverage"
     },
