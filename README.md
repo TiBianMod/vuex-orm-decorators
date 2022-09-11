@@ -270,6 +270,24 @@ class User extends Model {
 
 In this example the property `uuid` replaces the default `id` property as the primary key.
 
+You can also define a composite primary key by annotating several properties with the `@PrimaryKey` decorator as follows:
+
+```typescript
+import { Model } from '@vuex-orm/core';
+import { OrmModel, PrimaryKey, StringField } from 'vuex-orm-decorators';
+
+@OrmModel('users')
+class User extends Model {
+
+    @PrimaryKey()
+    @StringField() public id!: string;
+    
+    @PrimaryKey()
+    @StringField() public voteId!: string;
+
+}
+```
+
 ### Single Table Inheritance
 
 If your model extends a base model, then STI inheritance needs to be used. The base entity name needs to be provided as

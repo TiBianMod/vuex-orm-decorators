@@ -49,12 +49,26 @@ function Field(fieldType: Attribute) {
  * Adds the property as the `primary key` of the model
  */
 export function PrimaryKey() {
-    return (target: Object, propertyName: string | symbol): void => {
+    return (target: any, propertyName: string | symbol): void => {
         if (propertyName === 'id') {
             console.warn('[Vuex ORM Decorators] No need using `PrimaryKey` decorator on property `id`. Property `id` is by default the `primaryKey`.');
         }
 
-        (target.constructor as any).primaryKey = propertyName;
+        const symbol = Symbol.for("vuex-orm-decorator:primary-key");
+
+        if (typeof target[symbol] === 'object' && target[symbol] instanceof Array) {
+            target[symbol].push(propertyName)
+        }
+        if (typeof target[symbol] === 'string') {
+            if (target[symbol] !== propertyName) {
+                target[symbol] = [target[symbol], propertyName]
+            }
+        }
+        if (typeof target[symbol] === 'undefined') {
+            target[symbol] = propertyName
+        }
+
+        target.constructor.primaryKey = target[symbol]
     };
 }
 
