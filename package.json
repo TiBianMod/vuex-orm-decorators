@@ -7,6 +7,7 @@
     "typings": "dist/types/index.d.ts",
     "scripts": {
         "build": "pnpm lint && pnpm test && tsc --rootDir src && rm -rf dist/types/plugins",
+        "cleanup": "rm -rf {coverage,dist,node_modules}",
         "lint": "eslint . --ext .ts",
         "lint:report": "pnpm lint --output-file eslint_report.json --format json",
         "test": "vitest run",
