@@ -21,9 +21,8 @@
         "sourceRoot": "src",
         "strict": true,
         "strictNullChecks": true,
-        "suppressImplicitAnyIndexErrors": true,
         "target": "ES2015",
-        "importsNotUsedAsValues": "error",
+        "verbatimModuleSyntax": true,
         "lib": ["DOM", "ESNext"],
         "paths": {
             "@/*": ["src/*"],

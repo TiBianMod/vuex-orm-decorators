@@ -2,7 +2,7 @@ import { Model } from "@vuex-orm/core";
 import type { Attribute, Type } from "@vuex-orm/core";
 import type Mutator from "@vuex-orm/core/dist/src/attributes/contracts/Mutator";
 
-const defaultValues = {
+const defaultValues: Record<string, any> = {
     Attr: "",
     Boolean: false,
     String: "",
@@ -38,7 +38,7 @@ function Field(fieldType: Attribute) {
             field.isNullable = true;
         }
 
-        constructor._fields[propertyName] = field;
+        constructor._fields[propertyName as symbol] = field;
 
         constructor.fields = () => {
             return { ...constructor._fields };
