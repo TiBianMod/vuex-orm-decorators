@@ -9,10 +9,10 @@ use(DatePlugin);
 export class ORMDatabase {
     private static _ormDatabase = new Database();
 
-    private static _models: typeof Model[] = [];
+    private static _models: (typeof Model)[] = [];
 
     public static install(options?: Options): Plugin<any> {
-        this._models.forEach(model => this._ormDatabase.register(model));
+        this._models.forEach((model) => this._ormDatabase.register(model));
 
         const plugin = install(this._ormDatabase, options);
 

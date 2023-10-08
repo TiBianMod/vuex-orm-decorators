@@ -96,6 +96,13 @@ describe("OrmModel", () => {
         expect(Object.keys(Admin.fields())).toHaveLength(5);
 
         expect(Object.keys(SuperAdmin.fields())).toHaveLength(6);
-        expect(Object.keys(SuperAdmin.fields())).toEqual(["id", "name", "email", "level", "active", "fullAccess"]);
+        expect(Object.keys(SuperAdmin.fields())).toEqual([
+            "id",
+            "name",
+            "email",
+            "level",
+            "active",
+            "fullAccess",
+        ]);
     });
 });

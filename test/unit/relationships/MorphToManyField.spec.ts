@@ -54,8 +54,20 @@ describe("MorphToManyField", () => {
                 id: 1,
                 title: "Post title...",
                 tags: [
-                    { id: 1, tag_id: 1, taggable_id: 1, taggable_type: "posts", name: "typescript" },
-                    { id: 2, tag_id: 2, taggable_id: 1, taggable_type: "posts", name: "javascript" },
+                    {
+                        id: 1,
+                        tag_id: 1,
+                        taggable_id: 1,
+                        taggable_type: "posts",
+                        name: "typescript",
+                    },
+                    {
+                        id: 2,
+                        tag_id: 2,
+                        taggable_id: 1,
+                        taggable_type: "posts",
+                        name: "javascript",
+                    },
                 ],
             },
         });
@@ -65,24 +77,32 @@ describe("MorphToManyField", () => {
                 id: 1,
                 link: "http://example.com/video/something-nice",
                 tags: [
-                    { id: 1, tag_id: 1, taggable_id: 1, taggable_type: "videos", name: "typescript" },
+                    {
+                        id: 1,
+                        tag_id: 1,
+                        taggable_id: 1,
+                        taggable_type: "videos",
+                        name: "typescript",
+                    },
                     { id: 3, tag_id: 3, taggable_id: 1, taggable_type: "videos", name: "php" },
                 ],
             },
         });
 
-        [Post.getFields().tags as MorphToMany, Video.getFields().tags as MorphToMany].forEach(field => {
-            expect(field).toBeInstanceOf(MorphToMany);
+        [Post.getFields().tags as MorphToMany, Video.getFields().tags as MorphToMany].forEach(
+            (field) => {
+                expect(field).toBeInstanceOf(MorphToMany);
 
-            expect(field.related).toBe(Tag);
-            expect(field.pivot).toBe(Taggable);
+                expect(field.related).toBe(Tag);
+                expect(field.pivot).toBe(Taggable);
 
-            expect(field.relatedId).toBe("tag_id");
-            expect(field.id).toBe("taggable_id");
-            expect(field.type).toBe("taggable_type");
-            expect(field.parentKey).toBe("id");
-            expect(field.relatedKey).toBe("id");
-        });
+                expect(field.relatedId).toBe("tag_id");
+                expect(field.id).toBe("taggable_id");
+                expect(field.type).toBe("taggable_type");
+                expect(field.parentKey).toBe("id");
+                expect(field.relatedKey).toBe("id");
+            }
+        );
 
         expect(Post.query().with("tags").first()?.tags).toEqual([
             {

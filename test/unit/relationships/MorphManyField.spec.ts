@@ -64,14 +64,16 @@ describe("MorphManyField", () => {
             },
         });
 
-        [Post.getFields().comments as MorphMany, Video.getFields().comments as MorphMany].forEach(field => {
-            expect(field).toBeInstanceOf(MorphMany);
+        [Post.getFields().comments as MorphMany, Video.getFields().comments as MorphMany].forEach(
+            (field) => {
+                expect(field).toBeInstanceOf(MorphMany);
 
-            expect(field.related).toBe(Comment);
-            expect(field.id).toBe("commentable_id");
-            expect(field.type).toBe("commentable_type");
-            expect(field.localKey).toBe("id");
-        });
+                expect(field.related).toBe(Comment);
+                expect(field.id).toBe("commentable_id");
+                expect(field.type).toBe("commentable_type");
+                expect(field.localKey).toBe("id");
+            }
+        );
 
         expect(Post.query().with("comments").first()?.comments).toEqual([
             {

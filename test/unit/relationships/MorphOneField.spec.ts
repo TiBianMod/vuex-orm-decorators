@@ -68,14 +68,16 @@ describe("MorphOneField", () => {
             },
         });
 
-        [User.getFields().image as MorphOne, Post.getFields().image as MorphOne].forEach(field => {
-            expect(field).toBeInstanceOf(MorphOne);
+        [User.getFields().image as MorphOne, Post.getFields().image as MorphOne].forEach(
+            (field) => {
+                expect(field).toBeInstanceOf(MorphOne);
 
-            expect(field.related).toBe(Image);
-            expect(field.id).toBe("imageable_id");
-            expect(field.type).toBe("imageable_type");
-            expect(field.localKey).toBe("id");
-        });
+                expect(field.related).toBe(Image);
+                expect(field.id).toBe("imageable_id");
+                expect(field.type).toBe("imageable_type");
+                expect(field.localKey).toBe("id");
+            }
+        );
 
         expect(User.query().with("image").first()?.image).toEqual({
             $id: "1",

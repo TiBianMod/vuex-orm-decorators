@@ -24,15 +24,12 @@
         "suppressImplicitAnyIndexErrors": true,
         "target": "ES2015",
         "importsNotUsedAsValues": "error",
-        "lib": [
-            "DOM",
-            "ESNext"
-        ],
+        "lib": ["DOM", "ESNext"],
         "paths": {
             "@/*": ["src/*"],
             "test/*": ["test/*"]
         }
     },
     "include": ["src", "test"],
-    "exclude": ["node_modules", "test"],
+    "exclude": ["node_modules", "test"]
 }

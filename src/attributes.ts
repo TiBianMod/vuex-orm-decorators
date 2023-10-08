@@ -153,7 +153,9 @@ export function HasManyThroughField(
     localKey?: string,
     secondLocalKey?: string
 ) {
-    return Field(Model.hasManyThrough(related, through, firstKey, secondKey, localKey, secondLocalKey));
+    return Field(
+        Model.hasManyThrough(related, through, firstKey, secondKey, localKey, secondLocalKey)
+    );
 }
 
 /**
@@ -167,7 +169,9 @@ export function BelongsToManyField(
     parentKey?: string,
     relatedKey?: string
 ) {
-    return Field(Model.belongsToMany(related, pivot, foreignPivotKey, relatedPivotKey, parentKey, relatedKey));
+    return Field(
+        Model.belongsToMany(related, pivot, foreignPivotKey, relatedPivotKey, parentKey, relatedKey)
+    );
 }
 
 /**

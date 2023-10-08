@@ -1,7 +1,11 @@
 import { ORMDatabase } from "./database";
 import type { Model } from "@vuex-orm/core";
 
-export function OrmModel(entity: string, baseEntity?: string, types?: { [key: string]: typeof Model }) {
+export function OrmModel(
+    entity: string,
+    baseEntity?: string,
+    types?: { [key: string]: typeof Model }
+) {
     return <Model extends Function>(constructor: Model): Model => {
         // The name that is going be used as module name in Vuex Store.
         (constructor as any).entity = entity;
@@ -13,7 +17,7 @@ export function OrmModel(entity: string, baseEntity?: string, types?: { [key: st
 
         // The 'types mapping' used to dispatch entities based on their discriminator field.
         if (types && baseEntity) {
-            ORMDatabase.models().forEach(model => {
+            ORMDatabase.models().forEach((model) => {
                 if (model.entity === baseEntity) {
                     const _types = Object.assign(model.types(), types);
 
